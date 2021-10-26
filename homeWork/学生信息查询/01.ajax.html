@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班级学生联动信息</title>
+  <!-- Bootstrap 的 CSS 文件 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="01.ajax.css">
+</head>
+
+<body>
+  <div>
+    <div class="fs-2">学生管理</div>
+    <select name="class" id="classSelect" class="form-select">
+
+    </select>
+    <table class="table table-striped">
+      <tr>
+        <th>学生编号</th>
+        <th>学生姓名</th>
+        <th>所属班级</th>
+        <th>联系电话</th>
+        <th>家庭住址</th>
+        <th>QQ号</th>
+        <th>微信号</th>
+        <th>学生信息最后修改时间</th>
+      </tr>
+      <tbody id="tbData"></tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.10.1/qs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="server.js"></script>
+  <script src="01.ajax.js"></script>
+</body>
+
+</html>

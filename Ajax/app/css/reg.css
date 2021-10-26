@@ -1,0 +1,134 @@
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3453&q=80')
+    no-repeat fixed;
+  background-size: cover;
+}
+
+.login-form {
+  width: 240px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  background: inherit;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: rgba(179, 255, 210, 0.5);
+}
+
+.login-form::before {
+  content: '';
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: inherit;
+  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.25);
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: -1;
+  filter: blur(6px);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.login-form::after {
+  content: '';
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: inherit;
+  box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.25);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: -1;
+  filter: blur(6px);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.login-form h2 {
+  font-size: 18px;
+  font-weight: 18px;
+  color: #3d5245;
+}
+
+:is(.login-form) input,
+button {
+  margin: 6px 0;
+  height: 36px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0 14px;
+  color: #3d5245;
+}
+
+.login-form input::placeholder {
+  color: #3d5245;
+}
+
+.login-form button {
+  margin-top: 24px;
+  background-color: rgba(57, 88, 69, 0.4);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.login-form button:hover {
+  background-color: rgba(12, 80, 38, 0.67);
+}
+
+/* .login-form::before,
+.login-form::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 100%;
+  background-color: rgba(179, 255, 210, 0.5);
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: skewX(-15deg);
+  filter: blur(30px);
+  overflow: hidden;
+  transform: translateX(-100px);
+} */
+
+.login-form button::after {
+  width: 40px;
+  background-color: rgba(179, 255, 210, 0.3);
+  left: 60px;
+  filter: blur(5px);
+  opacity: 0;
+}
+
+.login-form button:hover::before {
+  transition: 1s;
+  transform: translateX(320px);
+  opacity: 0.7;
+}
+
+.login-form button:hover::after {
+  transition: 1s;
+  transform: translateX(320px);
+  opacity: 1;
+}

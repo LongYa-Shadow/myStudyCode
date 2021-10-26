@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生管理系统</title>
+  <link rel="stylesheet" href="total02.css">
+  <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+
+  <!-- 学生信息包括:学号，班级，姓名，生日,性别 -->
+
+  <div class="tc">学生管理系统</div>
+  <div class="layui-table" style="display: flex;">
+    <input class="layui-input" id="stuId" type="text" placeholder="学号">
+    <input class="layui-input" id="stuClass" type="text" placeholder="班级">
+    <input class="layui-input" id="stuName" type="text" placeholder="姓名">
+    <input class="layui-input" id="stuBirth" type="text" placeholder="生日">
+    <input class="layui-input" id="stuSex" type="text" placeholder="性别">
+    <button id="btnAddInfo" class="layui-btn">添加</button>
+    <button id="btnResetInfo" class="layui-btn">重置</button>
+  </div>
+
+  <table class="layui-table" lay-skin="line" lay-size="sg">
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>班级</th>
+        <th>姓名</th>
+        <th>生日</th>
+        <th>性别</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="tdData">
+
+    </tbody>
+  </table>
+
+
+  <div class="container">
+    <from class="login-form">
+      <input type="text" name="id" placeholder="学号">
+      <input type="text" name="class" placeholder="班级">
+      <input type="text" name="name" placeholder="姓名">
+      <input type="text" name="brith" id="reviseStuBirth" placeholder="生日">
+      <input type="text" name="sex" placeholder="性别">
+      <button type="submit" id="btnUpdata">保存</button>
+      <button type="submit" id="btnClose">取消</button>
+    </from>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  <script src="layui/layui.js"></script>
+  <script src="total02.js"></script>
+</body>
+
+</html>

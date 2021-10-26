@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX入门</title>
+  <link rel="stylesheet" href="../css/base.css">
+</head>
+
+<body>
+  <form action="querystring.html" method="post">
+    <input type="text" name="username">
+    <input type="text" name="age">
+    <input type="submit">
+  </form>
+
+  <h1>ajax回声请求演示</h1>
+  <input type="text" id="txtEcho" placeholder="echo">
+  <button id="btnSend">发送</button>
+  <pre id="perResult"></pre>
+  <div id="divEcho"></div>
+
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.10.1/qs.min.js"></script>
+  <script src="js/ajax01.js"></script>
+</body>
+
+</html>
