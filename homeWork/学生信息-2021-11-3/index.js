@@ -9,6 +9,7 @@ let stuAdd = document.getElementById('stuAdd')
 let stuReset = document.getElementById('stuReset')
 let stuQuery = document.getElementById('stuQuery')
 let stuData = document.getElementById('stuData')
+let queryInfo = {}
     //分页
 let stuPage = {
     pageNumber: 1,
@@ -37,7 +38,8 @@ stuReset.addEventListener('click', stuInfoReset)
 stuSelect.addEventListener("change", stuQuery_ask)
 queryClass_ask()
 stuQuery_ask()
-    //添加学生信息
+
+//添加学生信息
 function stuAdd_ask() {
     ajax.send('/manage/student/add', {
         tbStudent: {
@@ -60,7 +62,6 @@ function stuAdd_ask() {
 
 //查询班级
 function queryClass_ask() {
-
     ajax.send('/manage/class/queryAll', {
         page: stuPage
     }, (data) => {
@@ -85,6 +86,7 @@ function queryClass_ask() {
             //设置默认选中中间项
             let index = parseInt(list.length / 2)
             stuSelect.selectedIndex = index
+            stuQuery_ask()
         }
     })
 }
@@ -92,23 +94,26 @@ function queryClass_ask() {
 //查询学生班级信息
 function stuQuery_ask() {
     spinner_border.classList.add('spinner-border')
+    queryInfo = {
+        address: stuHome.value,
+        cid: stuSelect.value,
+        phone: stuPhone.value,
+        qq: stuQq.value,
+        sname: stuName.value,
+        wechat: stuWeChat.value
+    }
     ajax.send('/manage/student/queryAll', {
         page: stuPage,
-        tbStudent: {
-            address: stuHome.value,
-            cid: stuSelect.value,
-            phone: stuPhone.value,
-            qq: stuQq.value,
-            sname: stuName.value,
-            wechat: stuWeChat.value
-        }
+        tbStudent: queryInfo
     }, (data) => {
         if (data.success) {
             list = data.resultData.list
             stuPage = data.resultData.page
-            console.log(data.resultData.page);
+                // console.log(data.resultData.page);
             showStu()
             showStuPage()
+            minPage()
+            maxPage()
             spinner_border.classList.remove('spinner-border')
         }
     })
@@ -177,6 +182,7 @@ function stuDel_ask(sid) {
 
 //显示学生信息
 function showStu() {
+
     stuData.innerHTML = ''
     for (let i = 0; i < list.length; i++) {
         let item = list[i]
@@ -229,13 +235,15 @@ function showStu() {
         tr.append(td)
         stuData.appendChild(tr)
     }
+
 }
 
 
 // 显示学生分页
 function showStuPage() {
     pageList.innerHTML = ''
-        // console.log(stuPage);
+
+    // console.log(stuPage);
     for (let i = 0; i < stuPage.pageCount; i++) {
         let li = document.createElement('li')
         let a = document.createElement('a')
@@ -282,8 +290,8 @@ pagePrev.addEventListener('click', () => {
         minPage()
     maxPage()
 })
-minPage()
-maxPage()
+
+
 
 function minPage() {
     if (stuPage.pageNumber > 1) {
@@ -291,7 +299,7 @@ function minPage() {
         pagePrev.style.display = 'block'
 
     } else
-    if (stuPage.pageNumber == 1) {
+    if (stuPage.pageNumber === 1) {
         pagePrev.style.display = 'none'
         pagePrev.classList.add('disabled')
         stuPage.pageNumber = 1
@@ -301,11 +309,9 @@ function minPage() {
 function maxPage() {
     if (stuPage.pageNumber < stuPage.pageCount) {
         pageNext.classList.remove('disabled')
-        stuQuery_ask()
     } else
-    if (stuPage.pageNumber == stuPage.pageCount) {
+    if (stuPage.pageNumber === stuPage.pageCount) {
         pageNext.classList.add('disabled')
         stuPage.pageNumber = stuPage.pageCount
-        stuQuery_ask()
     }
 }
