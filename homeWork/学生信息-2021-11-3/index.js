@@ -18,11 +18,12 @@ let stuPage = {
 
 let tbStudent = {}
 let list = [];
+let classList = []
 
 let pagePrev = document.getElementById('pagePrev')
 let pageList = document.getElementById('pageList')
 let pageNext = document.getElementById('pageNext')
-    //模态框
+    //修改模态框
 let sutReset_modal = document.getElementById('sutReset_modal')
 let stuName_modal = document.getElementById('stuName_modal')
 let stuHome_modal = document.getElementById('stuHome_modal')
@@ -32,33 +33,23 @@ let stuQQ_modal = document.getElementById('stuQQ_modal')
 let stuWeChat_modal = document.getElementById('stuWeChat_modal')
 let btnMondify_modal = document.getElementById('btnMondify_modal')
 let btnClose_modal = document.getElementById('btnClose_modal')
-stuAdd.addEventListener('click', stuAdd_ask)
+
+//添加模态框
+let stuName_add = document.getElementById('stuName_add')
+let stuHome_add = document.getElementById('stuHome_add')
+let stuPhone_add = document.getElementById('stuPhone_add')
+let stuCid_add = document.getElementById('stuCid_add')
+let stuQQ_add = document.getElementById('stuQQ_add')
+let stuWeChat_add = document.getElementById('stuWeChat_add')
+let btnMondify_add = document.getElementById('btnMondif_add')
+let btnClose_add = document.getElementById('btnClose_add')
+    // stuAdd.addEventListener('click', )
 stuQuery.addEventListener('click', stuQuery_ask)
 stuReset.addEventListener('click', stuInfoReset)
 stuSelect.addEventListener("change", stuQuery_ask)
 queryClass_ask()
 stuQuery_ask()
 
-//添加学生信息
-function stuAdd_ask() {
-    ajax.send('/manage/student/add', {
-        tbStudent: {
-            address: stuHome.value,
-            cid: stuSelect.value,
-            phone: stuPhone.value,
-            qq: stuQq.value,
-            sname: stuName.value,
-            wechat: stuWeChat.value
-        }
-    }, (data) => {
-        // console.log(data);
-        if (data.success) {
-            alert(data.message)
-            stuInfoReset()
-            queryClass_ask()
-        }
-    })
-}
 
 //查询班级
 function queryClass_ask() {
@@ -67,27 +58,12 @@ function queryClass_ask() {
     }, (data) => {
         if (data.success) {
             // console.log(data);
-            let list = data.resultData.list
+            classList = data.resultData.list
                 // console.log(data);
-            stuSelect.innerHTML = ''
-                // let option = document.createElement('option')
-                // option.setAttribute('selected', 'selected')
-                // option.append('班级')
-                // stuSelect.appendChild(option)
-            for (let i = 0; i < list.length; i++) {
-                let item = list[i]
-                let option = document.createElement('option')
-                option.setAttribute('value', item.cid)
-                option.setAttribute('title', item.cinfo)
-                option.append(item.cname)
-                stuSelect.appendChild(option)
-            }
-
-            //设置默认选中中间项
-            let index = parseInt(list.length / 2)
-            stuSelect.selectedIndex = index
+            showClassList()
             stuQuery_ask()
         }
+
     })
 }
 
@@ -119,6 +95,76 @@ function stuQuery_ask() {
     })
 }
 
+function showClassList() {
+    //查询班级表单
+    stuSelect.innerHTML = ''
+    let option = document.createElement('option')
+    option.setAttribute('value', '-1')
+    option.setAttribute('selected', 'selected')
+    option.append('请选择班级')
+    stuSelect.appendChild(option)
+
+    for (let i = 0; i < classList.length; i++) {
+        let item = classList[i]
+        let option = document.createElement('option')
+        option.setAttribute('value', item.cid)
+        option.setAttribute('title', item.cinfo)
+        option.append(item.cname)
+        stuSelect.appendChild(option)
+    }
+
+    stuCid_add.innerHTML = ''
+        //添加学生班级表单
+    for (let i = 0; i < classList.length; i++) {
+        let item = classList[i]
+        let option = document.createElement('option')
+        option.setAttribute('value', item.cid)
+        option.setAttribute('title', item.cinfo)
+        option.append(item.cname)
+        stuCid_add.appendChild(option)
+    }
+
+    //修改学生班级表单
+    for (let i = 0; i < classList.length; i++) {
+        let item = classList[i]
+        let option = document.createElement('option')
+        option.setAttribute('value', item.cid)
+        option.setAttribute('title', item.cinfo)
+        option.append(item.cname)
+        stuCid_modal.appendChild(option)
+    }
+
+}
+
+let addInfo = {}
+    //添加学生信息
+function stuAdd_ask() {
+    addInfo = {
+        address: stuHome_add.value,
+        cid: stuCid_add.value,
+        phone: stuPhone_add.value,
+        qq: stuQQ_add.value,
+        sname: stuName_add.value,
+        wechat: stuWeChat_add.value
+    }
+    ajax.send('/manage/student/add', {
+        tbStudent: addInfo
+    }, (data) => {
+        // console.log(data);
+        if (data.success) {
+            alert(data.message)
+            stuHome_add.value = ''
+            stuCid_add.value = ''
+            stuPhone_add.value = ''
+            stuQQ_add.value = ''
+            stuName_add.value = ''
+            stuWeChat_add.value = ''
+            stuInfoReset()
+            queryClass_ask()
+        }
+    })
+}
+
 //重置信息
 function stuInfoReset() {
     stuName.value = ''
@@ -127,6 +173,8 @@ function stuInfoReset() {
     stuQq.value = ''
     stuWeChat.value = ''
     stuName.focus()
+    stuSelect.selectedIndex = 0
+    stuQuery_ask()
 }
 
 //显示修改学生
@@ -167,16 +215,22 @@ function stuMondifyShow_ask(item) {
 
 }
 //删除学生信息
-function stuDel_ask(sid) {
-    ajax.send('/manage/student/delete', {
-        "tbStudent.sid": sid
-    }, (data) => {
-        if (data.success) {
-            console.log(data);
-            alert(data.message)
-        }
-    })
-    stuQuery_ask()
+
+function stuDel_ask(item) {
+    let result = confirm(`确定要删除${item.sname}吗?`)
+    if (!result) {
+        return;
+    } else {
+        ajax.send('/manage/student/delete', {
+            "tbStudent.sid": item.sid
+        }, (data) => {
+            if (data.success) {
+                console.log(data);
+                alert(data.message)
+            }
+        })
+        stuQuery_ask()
+    }
 }
 
 
@@ -228,7 +282,7 @@ function showStu() {
         btnDel.classList.add('btn', 'btn-secondary')
         btnDel.append("删除")
         btnDel.addEventListener('click', () => {
-            stuDel_ask(item.sid)
+            stuDel_ask(item)
         })
         div.appendChild(btnDel)
         td.appendChild(div)
@@ -242,8 +296,7 @@ function showStu() {
 // 显示学生分页
 function showStuPage() {
     pageList.innerHTML = ''
-
-    // console.log(stuPage);
+        // console.log(stuPage);
     for (let i = 0; i < stuPage.pageCount; i++) {
         let li = document.createElement('li')
         let a = document.createElement('a')
@@ -257,6 +310,7 @@ function showStuPage() {
             li.classList.add('active')
         }
         li.addEventListener('click', () => {
+            queryClass_ask()
             removeActive()
             li.classList.add('active')
             forActive(li.value)
@@ -281,16 +335,17 @@ function removeActive() {
 //分页操作
 pageNext.addEventListener('click', () => {
     stuPage.pageNumber++
-        maxPage()
+        stuQuery_ask()
+    maxPage()
     minPage()
 })
 
 pagePrev.addEventListener('click', () => {
     stuPage.pageNumber--
-        minPage()
+        stuQuery_ask()
+    minPage()
     maxPage()
 })
-
 
 
 function minPage() {
