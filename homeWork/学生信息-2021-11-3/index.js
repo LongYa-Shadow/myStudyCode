@@ -48,7 +48,6 @@ stuQuery.addEventListener('click', stuQuery_ask)
 stuReset.addEventListener('click', stuInfoReset)
 stuSelect.addEventListener("change", stuQuery_ask)
 queryClass_ask()
-stuQuery_ask()
 
 
 //查询班级
@@ -58,9 +57,7 @@ function queryClass_ask() {
     }, (data) => {
         if (data.success) {
             // console.log(data);
-            classList = data.resultData.list
-                // console.log(data);
-            showClassList()
+            // classList = data.resultData.list
             stuQuery_ask()
         }
 
@@ -83,13 +80,14 @@ function stuQuery_ask() {
         tbStudent: queryInfo
     }, (data) => {
         if (data.success) {
+            classList = data.resultData.classList
             list = data.resultData.list
             stuPage = data.resultData.page
-                // console.log(data.resultData.page);
             showStu()
             showStuPage()
             minPage()
             maxPage()
+            showClassList()
             spinner_border.classList.remove('spinner-border')
         }
     })
@@ -103,7 +101,6 @@ function showClassList() {
     option.setAttribute('selected', 'selected')
     option.append('请选择班级')
     stuSelect.appendChild(option)
-
     for (let i = 0; i < classList.length; i++) {
         let item = classList[i]
         let option = document.createElement('option')
@@ -134,7 +131,6 @@ function showClassList() {
         option.append(item.cname)
         stuCid_modal.appendChild(option)
     }
-
 }
 
 let addInfo = {}
