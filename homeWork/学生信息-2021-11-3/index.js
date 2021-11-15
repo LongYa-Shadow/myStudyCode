@@ -124,7 +124,8 @@ function showClassList() {
         stuCid_add.appendChild(option)
     }
 
-    //修改学生班级表单
+    stuCid_modal.innerHTML = ''
+        //修改学生班级表单
     for (let i = 0; i < classList.length; i++) {
         let item = classList[i]
         let option = document.createElement('option')
