@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户首页</title>
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div>
+        <img src="" alt="   " id="myImg">
+        <span id="spUser"></span>
+        <button id="btnShowKey">显示开发者key</button>
+        <button id="btnModifyInfo">修改附件信息</button>
+        <button id="btnExit">安全退出</button>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.10.1/qs.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
+    <script src="../js/server.js"></script>
+
+    <!-- 修改的对话框 -->
+    <div id="divModifyDialog">
+        <div>
+            <div>用户附加信息</div>
+            <div><select name="" id="selSex">
+                <option value="m">男</option>
+                <option value="f">女人</option>
+                <option value="n">保密</option>
+            </select></div>
+            <div>邮箱：<input type="text" id="txtEmail"></div>
+            <div>头像：<input type="text" id="txtImg"></div>
+            <div>手机：<input type="text" id="txtPhone"></div>
+            <div>QQ：<input type="text" id="txtQq"></div>
+            <div>WhChat：<input type="text" id="txtWechat"></div>
+            <div>
+                <textarea name="" id="taInfo" cols="30" rows="5" placeholder="简介"></textarea>
+            </div>
+            <div class="button" id="btnSave">保存</div>
+            <div class="button" id="btnClose">取消</div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
