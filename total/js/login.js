@@ -15,6 +15,7 @@ btnLogin.addEventListener('click', () => {
     }, function(data) {
         if (data.success) {
             //跳转页面
+            location = 'main.html'
         } else {
             //修改显示的内容
             bsBody.innerHTML = data.message
@@ -22,6 +23,7 @@ btnLogin.addEventListener('click', () => {
             setTimeout(() => {
                 bsInfo.hide()
             }, 2000)
+
         }
     })
 })

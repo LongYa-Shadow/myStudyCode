@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板！！!</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/iconfont.css">
+    <link rel="stylesheet" href="css/message.css">
+
+</head>
+
+<body>
+
+    <div id="container">
+        <!-- 模板样式 ，头是发帖得用户信息,身体是帖子标题，脚是时间和回帖数-->
+        <div class="card m-3">
+            <div class="card-header">发帖人：黑暗骑士</div>
+            <div class="card-body">震惊！！！！文理学院...</div>
+            <div class="card-footer">
+                <span>2020-11-11 11:11:11</span>
+                <span>评论数:7</span>
+            </div>
+        </div>
+    </div>
+    <!-- 分页的部分 -->
+    <nav class="d-flex p-2 justify-content-center">
+        <ul class="pagination">
+            <li class="page-item" id="btnPre">
+                <a href="javascript:void(0);" class="page-link">
+                    &lt; &lt;
+                </a>
+            </li>
+            <li class="page-item">
+                当前页面/分页总数/记录数: <span id="spPage"></span>
+            </li>
+            <li class="page-item" id="btnNext">
+                <a href="javascript:void(0);" class="page-link">
+                    &gt; &gt;
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="divLoading"></div>
+
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+    <script src="lib/qs.min.js"></script>
+    <script src="lib/spark-md5.min.js"></script>
+    <script src="lib/server.js"></script>
+    <script src="js/message.js"></script>
+</body>
+
+</html>

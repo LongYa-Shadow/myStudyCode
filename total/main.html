@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户首页</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="preload" href="//at.alicdn.com/t/font_2459016_n13ccn6g2j.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/iconfont.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- text-文本对齐 p-padding -->
+    <div class="text-end p-2">
+        <!-- btn-group，合并按钮为一组 -->
+        <div class="btn-group">
+            <span class="btn btn-outline-primary">
+                <i class="iconfont">&#xe60f;</i>菜单
+            </span>
+            <!--dropdown-toggle-split 分离 
+                dropdown-toggle
+                data-bs-toggler="dropdown"触发下拉菜单
+            -->
+            <span data-bs-toggle="dropdown" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"></span>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                    <i class="iconfont">&#xe758;</i>
+                    <span id="spUser"></span>
+                </li>
+                <li class="dropdown-item">
+                    <i class="iconfont">&#xe758;</i>
+                    <span id="spUserInfo" data-bs-toggle="modal" data-bs-target="#divUDialog">用户附加信息</span>
+                </li>
+                <li class="dropdown-divider"></li>
+                <!-- 作业一 完成下所有功能 -->
+                <li class="dropdown-item">
+                    <i class="iconfont">&#xe64e;</i>
+                    <span id="">修改密码</span>
+                    <li class="dropdown-item">
+                        <i class="iconfont">&#xe632;</i>
+                        <span id="">修改昵称</span>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="dropdown-item">
+                        <i class="iconfont">&#xe892;</i>
+                        <span id="">安全退出</span>
+                    </li>
+                    <!-- 注册页面(使用邮箱注册接口完成) -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- 修改附加信息的对话框开始 -->
+    <div class="modal fade " id="divUDialog" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"><span><i class="iconfont">&#xe690;</i>修改信息</span></div>
+                <div class="modal-body">
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe666;</span>
+                        <select class="form-select" id="selSex">
+                            <option value="n">保密</option>
+                            <option value="m">男</option>
+                            <option value="f">女</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe66f;</span>
+                        <input id="txtEmail" type="text" class="form-control" placeholder="邮件">
+                    </div>
+
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe620;</span>
+                        <input id="txtUrl" type="text" class="form-control" placeholder="头像url">
+                    </div>
+
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe61f;</span>
+                        <input id="txtPhone" type="text" class="form-control" placeholder="电话">
+                    </div>
+
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe882;</span>
+                        <input id="txtQq" type="text" class="form-control" placeholder="qq">
+                    </div>
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe600;</span>
+                        <input id="txtWeChat" type="text" class="form-control" placeholder="微信">
+                    </div>
+                    <div class="input-group m-1">
+                        <span class="input-group-text iconfont">&#xe75b;</span>
+                        <input id="txtInfo" type="text" class="form-control" placeholder="简介">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnSave" class="btn btn-primary"><i class="iconfont">&#xe613;</i> 保存</button>
+                    <button data-bs-toggle="modal" data-bs-target="#divUDialog" class="btn btn-danger"><i class="iconfont">&#xe718;</i> 关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修改附加信息的对话框结束 -->
+
+    <!-- toast信息框 -->
+    <div style="z-index: 2000;" class="position-fixed fixed-top">
+        <div class="toast" id="divToast">
+            <div class="toast-body">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+    <script src="lib/qs.min.js"></script>
+    <script src="lib/spark-md5.min.js"></script>
+    <script src="lib/server.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

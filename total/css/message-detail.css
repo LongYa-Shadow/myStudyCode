@@ -1,0 +1,44 @@
+#divTitle {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* background-image: linear-gradient( to right, #43C6AC, #F8FFAE); */
+}
+
+#divAttr {
+    text-align: end;
+    color: #999;
+    padding: 0.2rem;
+}
+
+#divInfo {
+    word-break: break-all;
+    padding: 0.3rem;
+    text-indent: 2rem;
+}
+
+#divReplies {
+    margin: 1rem 0;
+}
+
+#divReplies>div {
+    display: flex;
+    padding: .2rem;
+}
+
+#divReplies>div>div:first-of-type {
+    margin: 0 1rem;
+    border-right: 2px solid #acacac;
+    width: 5rem;
+    text-overflow: ellipsis;
+    text-align: end;
+}
+
+#divReplies>div>div:first-of-type::after {
+    content: '：';
+}
+
+#divNoReply {
+    display: none;
+}
