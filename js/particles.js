@@ -1,1 +1,0 @@
-particlesJS.load('divParticles','particles.json')
