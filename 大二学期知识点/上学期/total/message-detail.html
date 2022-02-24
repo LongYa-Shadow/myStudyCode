@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/iconfont.css">
+    <link rel="stylesheet" href="css/message-detail.css">
+</head>
+
+<body>
+    <div class="text-end p-1">
+        <a href="message.html">返回列表</a> |
+        <a href="javascript:void(0);" id="refresh">刷新</a> |
+
+        <a id="btnReply" href="javascript:void(0);" data-bs-target='#sendReplyDialog' data-bs-toggle="modal">我要评论</a>
+    </div>
+
+    <!-- 发布评论的对话框 -->
+    <div id="sendReplyDialog" class="modal fade" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">留言评论</div>
+                <div class="modal-body">
+                    <textarea class="form-control" placeholder="评论" id="txtReply" rows="5"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <span id="btnPublish" class="btn btn-primary">发布评论</span>
+                    <span data-bs-target='#sendReplyDialog' data-bs-toggle="modal" class="btn btn-danger">取消</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 帖子详细信息 -->
+    <div>
+        <div id="divTitle"></div>
+        <div id="divAttr"></div>
+        <div id="divInfo"></div>
+    </div>
+
+    <!-- 评论列表 -->
+    <div id="divReplies">
+        <div>
+            <!-- 评论的模板 -->
+            <div>黑暗骑士</div>
+            <div>
+                <div>评论内容</div>
+                <div>评论时间</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divNoReply">
+        还没有评论，我要沙发
+    </div>
+
+    <!-- 加载更多(另类翻页) -->
+    <div id="divMore" class="text-center m-3">加载更多</div>
+    <div id="divNoMore" class="text-center m-3">我是有底线的</div>
+    <!-- pageNumber==pageCount -->
+
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+    <script src="lib/qs.min.js"></script>
+    <script src="lib/spark-md5.min.js"></script>
+    <script src="lib/server.js"></script>
+
+    <script src="js/message-detail.js"></script>
+</body>
+
+</html>

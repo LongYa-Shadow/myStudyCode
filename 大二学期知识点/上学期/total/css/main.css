@@ -1,0 +1,22 @@
+.menus {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.menus .card {
+    margin: 1rem;
+    min-width: 10rem;
+    max-width: 15rem;
+    text-align: center;
+}
+
+.menus .card .iconfont {
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+.menus .card .iconfont:hover {
+    color: #f00;
+}
