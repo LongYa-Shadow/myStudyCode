@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单元素</title>
+</head>
+
+<body>
+  <!-- 文本框  placeholder:没有输入时候的提示信息-->
+  <input type="text" placeholder="请输入用户名">
+  <!--密码框 -->
+  <input type="password" placeholder="密码">
+
+  <!-- 不常用的输入框 -->
+  <input type="number">
+  <input type="date">
+
+  <!-- label作用，是将里面的表单元素和其他元素看成一个整体
+  点击其他元素和点击表单元素效果一致
+    radio是单选按钮
+    name相同的为一组，会有互斥的效果
+    checked表示状态变成选中
+  -->
+  <label>
+    <input type="radio" name="xb" checked> 男生
+  </label>
+  <label>
+    <input type="radio" name="xb" checked> 女生
+  </label>
+  <label>
+    <input type="radio" name="xb" checked> 保密
+  </label>
+  <!-- 复选框 -->
+  <label>
+    <input type="checkbox">游戏
+  </label>
+  <label>
+    <input type="checkbox" checked>音乐
+  </label>
+  <label>
+    <input type="checkbox">电影
+  </label>
+  <!-- 文本域：多行文本框
+cols:一行最大字符数，超过自动换行
+rows:默认显示多少行，超过会出现滚动条
+-->
+  <textarea cols="30" rows="10"></textarea>
+
+  <select>
+    <option value="1">湖南</option>
+    <option value="2">湖北</option>
+    <option value="3">四川</option>
+  </select>
+  <!-- 
+    select  下拉列表，复合标记 multiple多选，size显示项数
+    option  下拉选项
+   -->
+  <select multiple size="1">
+    <option>黑暗骑士</option>
+    <option>美国队长</option>
+    <option>蜘蛛侠</option>
+    <option>罗夏</option>
+    <option>惊奇队长</option>
+    <option>绿巨人</option>
+  </select>
+
+
+</body>
+
+</html>

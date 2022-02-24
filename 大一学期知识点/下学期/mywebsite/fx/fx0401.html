@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地储存测试</title>
+</head>
+
+<body>
+  本地储存的数据
+  <div id="divData">
+  </div>
+  <script>
+    //本地储存的信息在同网站的任意页面都能获取到
+    let divData = document.getElementById('divData');
+    let info = localStorage.getItem('savedata');
+    divData.innerHTML = info;
+    /*
+      sessionStorage和localStorage只有一点区别
+      就是关闭浏览器，sessionStorage的保存至会丢失
+      其他都一样
+    */
+  </script>
+</body>
+
+</html>

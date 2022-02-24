@@ -1,0 +1,79 @@
+/* 容器*/
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 5rem auto;
+}
+
+.container > div {
+  width: 530px;
+  height: 300px;
+  position: relative;
+  border: 15px inset #dcdcdc;
+}
+
+#divBg {
+  height: 100%;
+  width: 100%;
+  background-image: url(../images/1.jpg);
+  background-size: cover;
+  background-position: center;
+  transition: background-image 2s linear;
+}
+
+#divPre,
+#divNext,
+#divPoint {
+  position: absolute;
+}
+
+#divPre,
+#divNext {
+  box-sizing: border-box;
+  top: 0px;
+  background-color: rgba(99, 99, 99, 0.6);
+  color: #aaa;
+  font-size: 2rem;
+  height: 60px;
+  bottom: 0;
+  margin: auto 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+#divPre {
+  left: 0;
+}
+
+#divNext {
+  right: 0;
+}
+
+#divPre:active,
+#divNext:active {
+  color: #fff;
+}
+
+#divPoint {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+#divPoint > span {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 2px solid #999;
+  border-radius: 50%;
+  background-color: #000;
+  margin-right: 0.1rem;
+  transition: 1s;
+}
+
+#divPoint .acitve {
+  background-color: #fff;
+}

@@ -1,0 +1,40 @@
+/* 容器 */
+.container {
+  width: 20rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 图片容器 */
+.container > div:last-child {
+  margin: 16px;
+  border: 1px solid #dcdcdc;
+  border-radius: 0.5rem;
+  padding: 4px;
+}
+
+#imgRand {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#spStart {
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #ff00aa;
+  color: #fff;
+}
+
+#spStart:hover {
+  cursor: pointer;
+  background-color: #dd0099;
+}
+
+/* 选择器中间没有空格表示同时匹配两个选择器的元素才会生效 */
+#spStart.disible {
+  background-color: #dcdcdc;
+  cursor: not-allowed;
+}

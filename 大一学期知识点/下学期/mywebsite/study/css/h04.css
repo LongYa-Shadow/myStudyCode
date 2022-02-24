@@ -1,0 +1,47 @@
+/* 按钮基本样式 */
+.mybutton {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.mybutton:hover {
+  background-color: #eee;
+}
+
+/* 按钮容器样式 */
+.btn1 .mybutton {
+  border-width: 0;
+  background-color: #00f;
+  color: #fff;
+}
+
+.btn1 .mybutton:hover{
+  background-color: #00a;
+}
+
+/* 按钮容器样式二 */
+.btn2 .mybutton{
+  border-color: transparent;
+  background-color: #f00;
+  color: #fff;
+}
+
+.btn2 .mybutton:hover{
+  background-color: #a00;
+}
+
+.wx span{
+  display: inline-block;
+  margin: 0.5rem;
+  padding: .5rem 1rem;
+  background-color: #f00;
+  color: #fff;
+}
+
+.wx .active{
+  background-color: #00f;
+}

@@ -1,0 +1,39 @@
+/* 去掉body默认的边距 */
+body {
+  margin: 0px;
+}
+.bg01 {
+  /* background-color: 背景颜色 */
+  background-color: #0000ff;
+  color: #ffffff;
+}
+.bg02 {
+  background-color: #ff00ff;
+  color: #ffffff;
+}
+.bg03 {
+  /* background-image:背景图片
+  url里面是图片的名称地址
+   */
+  background-image: url("img1.jpg");
+  /* background-size: cover;
+  尽可能的让背景图片适配页面
+  */
+  background-size: cover;
+  background-attachment: fixed;
+}
+.bg04 {
+  background-image: url("img1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+.tc{
+  /* text-align: 文字对齐方式，center中，right右，left左 */
+  text-align: center;
+}
+.tr{
+  text-align: right;
+}
+.tl{
+  text-align: left
+}

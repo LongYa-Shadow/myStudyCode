@@ -1,0 +1,66 @@
+.mybox{
+  /* border,边框，1px是边框的宽度，solid是边框类型，#ff0000是边框颜色 */
+  border: 1px solid #ff0000;
+  /* padding内边距，rem是大小单位，为基准字体大小倍数 */
+  padding: 0.5rem;
+  /* margin外边距 */
+  margin: 0.2rem;
+}
+
+/* 去掉浏览器默认的边距 */
+body{
+  margin: 0;
+}
+
+.mydiv{
+  border: 1px solid #ff0000;
+  padding: 0.5rem;
+  margin: 0.2rem;
+}
+
+/* 压力盒子 */
+.flex01{
+  /* 压力盒子会将里面第一级的子元素强制压迫在一行上 */
+  display: flex;
+}
+
+.flex02{
+  display: flex;
+  /*justify-content 水平轴得对齐方式，space-between子元素分散对齐 */
+  justify-content: space-between;
+}
+
+.flex03{
+  display: flex;
+  /* space-around空白平均分配在子元素的两侧 */
+  justify-content: space-around;
+}
+
+.flex04{
+  display: flex;
+  /* center,居中, flex-start,靠左（默认值），flex-end（靠右） */
+  justify-content: center;
+}
+
+.flex05{
+  display: flex;
+  /* align-items:垂直轴对齐方式，不写是填满容器，center，居中 
+  flex-start靠上，flex-eng靠下*/
+  align-items: center;
+}
+
+.flex06{
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex07{
+  display: flex;
+  align-items: flex-end;
+}
+
+.flex08{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

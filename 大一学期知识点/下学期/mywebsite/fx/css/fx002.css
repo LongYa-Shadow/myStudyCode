@@ -1,0 +1,27 @@
+.container {
+  border: 5px solid #0f0;
+  display: flex;
+  /*  row 默认值，弹性元素在容器中水平排列（左向右）
+                - 主轴 自左向右
+      row-reverse 弹性元素在容器中方向水平排列（右向左）
+                - 主轴 自右向左
+      column 弹性元素纵向排列（自上向下）
+      column-reverse 弹性元素方向纵向排列（自下向上） */
+  flex-direction: column-reverse;
+  height: 100vh;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+}
+
+.container > div {
+  border: 1px solid #f00;
+}
+
+.container > div:nth-child(2) {
+  flex: 1;
+  /* 嵌套的压力布局 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

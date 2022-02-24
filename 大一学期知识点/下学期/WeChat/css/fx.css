@@ -1,0 +1,107 @@
+/*顶级容器全屏，无滚动条*/
+.contianer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ebebeb;
+  position: relative;
+}
+
+/* 中间的区域填满 */
+.contianer > div:nth-child(3) {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.add::after {
+  content: '';
+  border: 8px solid transparent;
+  border-bottom-color: rgb(78, 75, 75);
+  border-top: none;
+  position: absolute;
+  height: 8px;
+  box-sizing: content-box;
+  top: -16px;
+  right: 10px;
+}
+
+.add {
+  display: none;
+  position: absolute;
+  background-color: rgb(78, 75, 75);
+  color: #fff;
+  right: -5px;
+  top: 43px;
+  width: 10rem;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.add div {
+  border-bottom: 1px solid #5f5f5f;
+  padding: 0.8rem 0;
+}
+
+.add span {
+  margin-left: 1.2rem;
+}
+
+.add-wrapper:active + div.add {
+  display: block;
+}
+
+/* 选择器a,选择器b a或者b */
+.contianer > div:first-child,
+.contianer > div:last-child {
+  padding: 0.5rem;
+}
+
+/* 上方左右布局 */
+.contianer > div:first-child {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.contianer > div:nth-child(2) {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.add-wrapper {
+  padding-left: 0.6rem;
+}
+
+/* 下方是space-around布局 */
+.contianer > div:last-child {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+}
+
+/* 下方图标整体样式*/
+.bottom-icon {
+  text-align: center;
+}
+
+.bottom-icon .iconfont {
+  font-size: 1.2rem;
+}
+
+.bottom-icon > div:last-child {
+  font-size: 0.8rem;
+}
+
+/* 激活的图标 */
+.active {
+  color: #0c0;
+}
+
+.contianer > div:nth-child(3) > div {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}

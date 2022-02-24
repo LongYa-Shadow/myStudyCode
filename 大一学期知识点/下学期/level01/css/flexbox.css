@@ -1,0 +1,75 @@
+.flex01 {
+  display: flex;
+}
+
+/* 选择器a > 选择器b 表示a里面的第一级的b */
+.flex01 > div {
+  border: 1px solid #f00;
+}
+
+.flex01 > div:nth-child(1) {
+  color: #00f;
+  /* flex样式时压力盒子厘米那的子元素的特殊样式
+  ，值是压力的大小，越大分配的屏幕比例越大
+  有了这个样式，水平对齐不再有意义
+   */
+  flex: 1;
+}
+
+.flex01 > div:nth-child(2) {
+  flex: 3;
+}
+
+.flex01 > div:nth-child(3) {
+  flex: 2;
+}
+
+.flex02 {
+  display: flex;
+}
+
+.flex02 > div {
+  border: 1px solid #f00;
+}
+
+/* :last-child元素中的最后一个 */
+.flex02 > div:last-child {
+  /* 如果只有一个子元素设置富勒烯，那么不论值是多少，都会占满剩余空间 */
+  flex: 1;
+}
+
+.flex02 > div:first-child {
+  width: 10rem;
+}
+
+.flex03 {
+  display: flex;
+  /* 
+  默认情况下，压力布局将子元素放到一行上
+    flex-wrap: wrap; 表示如果子元素的总宽度超过了容器，允许子元素在多行
+   */
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex03 > div {
+  border: 1px solid #f00;
+  width: 260px;
+}
+
+/* 切换压力布局的方向 */
+.flex04{
+  display: flex;
+  border: 1px solid #00f;
+  /* 将压力布局方向变成竖向 */
+  flex-direction: column;
+  height: 20rem;
+}
+
+.flex04 > div{
+  border: 1px solid #f00;
+}
+
+.flex04 > div:nth-child(2){
+  flex: 1;
+}

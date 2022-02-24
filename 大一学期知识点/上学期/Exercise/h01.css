@@ -1,0 +1,43 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: teal;
+}
+.basic {
+  margin: 50px auto;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+.blur {
+  position: absolute;
+  bottom: 25px;
+  right: 100px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.border {
+  border: 1px solid #cccccc;
+  width: 330px;
+  height: 400px;
+  margin: 50px auto;
+}
+
+.padding {
+  padding: 10px 10px;
+}
+
+.h01{
+  border: 2px solid #000000;
+  text-align: center;
+  padding: 10px 20px 30px 40px;
+  width: 100px;
+  margin: 10px auto;
+
+}

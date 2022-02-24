@@ -1,0 +1,14 @@
+body{
+  background-image: url(../../images/1\ \(1\).jpg);
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+  color:#bfa;
+}
+
+.tc{
+  text-align: center;
+}

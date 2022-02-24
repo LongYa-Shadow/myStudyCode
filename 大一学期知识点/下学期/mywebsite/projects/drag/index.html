@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖动-遮罩弹出层</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- draggable属性是设置元素是否支持拖放 -->
+    <div id="dnd" draggable="true">拖</div>
+    <button id="btnPop">弹出对话框</button>
+    <button id="btnClosePop">自动关闭对话框</button>
+  </div>
+
+
+  <!--模拟模态弹出对话框  -->
+  <div id="maskBox">
+    <div id="contentBox">
+      <div>
+        <span id="spClose">X</span>
+      </div>
+      <div>
+        模态框的内容
+      </div>
+      <button id="btnClose">关闭</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

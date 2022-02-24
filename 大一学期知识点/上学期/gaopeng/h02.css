@@ -1,0 +1,21 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+h1 {
+  text-align: center;
+}
+.bd {
+  text-align: center;
+}
+
+
+
+.border {
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff;
+  width: 100px;
+  border-radius: 8px;
+  margin: 0px auto;
+}

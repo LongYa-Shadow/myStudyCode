@@ -1,0 +1,67 @@
+
+.form_div {
+  border: 1px solid #a0b1c4;
+  border-radius: 2px;
+}
+
+.form_title{
+  display: flex;
+  padding:0.5rem 0px ;
+  justify-content: space-around;
+  border-bottom: 1px solid #a0b1c4  ;
+  background-color: #f9fbfe;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.disable_text{
+  color: #999;
+}
+
+/* 下方的区域 */
+.form_main_div{
+  padding: 1rem;
+}
+
+/* :focus-within当元素获取焦点时 */
+.input_div:focus-within{
+  border-color: #4892e7;
+}
+
+/* 模拟输入表单元素 */
+.input_div{
+  border: 1px solid #96a5b4;
+  border-radius: 1px;
+  padding:0.1rem 0.3rem ;
+}
+
+.input_div input{
+  outline: none;
+  border-width: 0px;
+}
+
+.mr_div{
+  margin-bottom: 00.5rem;
+}
+
+.button_div{
+  background-color: #4892e7;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: #fff;
+  padding:0.2rem 0px ;
+}
+
+.button_div:hover{
+  background-color: #58a3f8;
+  /* 鼠标变成超链接手指样式 */
+  cursor: pointer;
+}
+
+.qr_div{
+  color: #225592;
+  font-size: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+

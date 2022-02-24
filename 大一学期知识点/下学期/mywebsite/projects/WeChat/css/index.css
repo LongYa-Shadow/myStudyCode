@@ -1,0 +1,149 @@
+/*顶级容器全屏，无滚动条*/
+.contianer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #dcdcdc;
+  position: relative;
+}
+
+.contianer > div:nth-child(2) {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.add::after {
+  content: '';
+  border: 8px solid transparent;
+  border-bottom-color: rgb(78, 75, 75);
+  border-top: none;
+  position: absolute;
+  height: 8px;
+  box-sizing: content-box;
+  top: -16px;
+  right: 10px;
+}
+
+.add {
+  display: none;
+  position: absolute;
+  background-color: rgb(78, 75, 75);
+  color: #fff;
+  right: -5px;
+  top: 43px;
+  width: 10rem;
+  border-radius: 5px;
+  z-index: 1;
+  display: none;
+}
+
+.add div {
+  border-bottom: 1px solid #5f5f5f;
+  padding: 0.8rem 0;
+}
+
+.add span {
+  margin-left: 1.2rem;
+}
+
+.add-wrapper:active + div.add {
+  display: block;
+}
+
+.contianer > div:nth-child(2) > span {
+  padding-left: 0.6rem;
+}
+
+/* 中间的区域填满 */
+.contianer > div:nth-child(3) {
+  flex: 1;
+  background-color: #fff;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* 选择器a,选择器b a或者b */
+.contianer > div:first-child,
+.contianer > div:last-child {
+  padding: 0.5rem;
+}
+
+/* 上方左右布局 */
+.contianer > div:first-child {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.contianer > div:first-child > div {
+  font-weight: bold;
+}
+
+/* 下方是space-around布局 */
+.contianer > div:last-child {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 下方图标整体样式*/
+.bottom-icon {
+  text-align: center;
+}
+
+.bottom-icon .iconfont {
+  font-size: 1.2rem;
+}
+
+.bottom-icon > div:last-child {
+  font-size: 0.8rem;
+}
+
+/* 激活的图标 */
+.active {
+  color: #0c0;
+}
+
+/* 聊天样式 */
+.chat-div {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #dcdcdc;
+  align-items: center;
+}
+
+.chat-div img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10%;
+}
+
+.contianer > div:nth-child(3) > .chat-div:nth-child(2) > div:first-child {
+  position: relative;
+}
+
+.TrackPoint {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+/* 中间聊天信息沾满 */
+.chat-div > div:nth-child(2) {
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+/* 聊天记录 */
+.chat-name {
+  font-weight: bold;
+}
+
+.chat-info {
+  font-size: 0.8rem;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复习4_99乘法表</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    #div99>span {
+      display: inline-block;
+      width: 5rem;
+    }
+
+    @keyframes cur {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+
+    }
+
+    .cur {
+      animation: cur 0.5s infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div99"></div>
+  <span id="divType"></span>
+  <span class="cur">|</span>
+  <button onclick="event01();event02()">事件处理1</button>
+  <button id="btn01">事件处理2</button>
+  <button id="btn02">事件处理3</button>
+  <hr>
+  <input type="text" id="txt01" placeholder="记住我">
+  <button id="btn03">点击就能记住</button>
+  <button id="btn04">点击获取记住的数据</button>
+  <span id="spInfo"></span>
+  <script src="js/fx04.js"></script>
+</body>
+
+</html>

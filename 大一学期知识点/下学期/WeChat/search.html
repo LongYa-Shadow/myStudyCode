@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>search</title>
+  <link rel="stylesheet" href="./css/iconfont.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .search {
+      width: 100vw;
+      height: 100vh;
+      background-color: #dcdcdc;
+
+    }
+
+    .search .search-ipt {
+      width: 100;
+      display: flex;
+      align-items: center;
+      height: 1.8rem;
+      padding: .5rem;
+      border-radius: 3px;
+      color: #a7a3a3;
+      justify-content: space-between;
+    }
+
+    .search-ipt >form{
+      background-color: #fff;
+      width: 85%;
+      height: 2rem;
+      line-height: 2rem;
+    }
+
+    .search-ipt >form i{
+    margin-right: 2px;
+
+    }
+
+    .search-ipt input {
+      border: none;
+      outline: none;
+    }
+
+    .search a {
+      text-decoration: none;
+      line-height: 1.8rem;
+      color: rgb(40, 40, 156);
+    }
+
+    .search .search-content {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      color: #a7a3a3;
+      font-size: 0.9rem;
+    }
+
+    .search .search-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .search .search-bottom>a {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px;
+      text-align: center;
+      width: 33.33333%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search">
+    <div class="search-ipt">
+      <form action="#">
+        <i class="iconfont">&#xe610;</i>
+        <input type="text" placeholder="搜索">
+      </form>
+      <a href="#" onclick="location='index.html'">取消</a>
+    </div>
+
+
+    <div class="search-content">
+      搜索指定内容
+    </div>
+    <div class="search-bottom">
+
+      <a href="javascript:;">朋友圈</a>
+      <a href="javascript:;">文章</a>
+      <a href="javascript:;">公众号</a>
+
+      <a href="javascript:;">小程序</a>
+      <a href="javascript:;">音乐</a>
+
+      <a href="javascript:;">表情</a>
+      <a href="javascript:;">服务</a>
+    </div>
+
+  </div>
+  </div>
+
+</body>
+
+</html>

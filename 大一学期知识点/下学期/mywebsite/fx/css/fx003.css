@@ -1,0 +1,19 @@
+.fixed-box {
+  position: fixed;
+  top: 1rem;
+  right: 0;
+}
+
+.ralative-box {
+  /* position: relative; */
+  border: 1px solid #bfa;
+  height: 10rem;
+  width: 20rem;
+}
+
+.ralative-box > div:first-child {
+  position: absolute;
+  bottom: 2rem;
+  left: 5rem;
+}
+

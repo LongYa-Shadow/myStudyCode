@@ -1,0 +1,50 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+div {
+  margin: 100px;
+  text-align: center;
+}
+
+.one {
+  font-size: 2rem;
+  color: #cccccc;
+}
+
+.two {
+  position: relative;
+  bottom: 20px;
+  font-size: 1.3rem;
+  color: #cccccc;
+}
+
+.three {
+  font-size: 1.3rem;
+}
+
+.f {
+  font-size: 2rem;
+  color: #cccccc;
+}
+.five {
+  font-size: 1.3rem;
+}
+
+.six {
+  font-size: 2rem;
+  color: red;
+}
+.seven {
+  font-size: 2rem;
+  color: #cccccc;
+}
+.eight {
+  font-size: 2rem;
+  color: blue;
+}
+.nine {
+  font-size: 1.3rem;
+  color: yellow;
+}

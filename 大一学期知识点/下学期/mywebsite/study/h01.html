@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+</head>
+
+<body>
+
+  <input type="password" id="txtdemo" placeholder="输入信息">
+  <div id="divdemo"></div>
+
+
+
+  <!-- JavaScript的内容是放置在script标记中 -->
+
+  <script>
+    /*
+    JavaScript的注释格式一，多行注释
+    */
+    //JavaScript的注释格式二，单行注释
+    // console.log(在浏览器console中输出的信息);
+    console.log("hello world!");
+    //Javascript拥有任意修改页面的能力
+    document.write(new Date());
+    //Javascript拥有任意修改样式的能力
+    document.body.style.color = "#f00";
+    //JavaScirpt可以响应用户的操作（事件处理）
+    document.body.addEventListener("click", function () {
+      alert("hello world")
+    });
+
+  </script>
+  <!-- 导入外部js文件     -->
+  <script src="js/h01.js"></script>
+</html>

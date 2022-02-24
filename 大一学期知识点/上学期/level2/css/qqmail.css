@@ -1,0 +1,36 @@
+body {
+  margin: 0px;
+}
+
+/* 最上方的左右布局 */
+.topdiv {
+  /* 布局部分 */
+  display: flex;
+  /* 水平轴分散对齐 */
+  justify-content: space-between;
+  /* 垂直轴居中 */
+  align-items: center;
+  /* 留白部分 */
+  padding: 10px 30px;
+  /*背景色和边框 */
+  background-color:  #eff4fa;
+  border-bottom: 1px solid #d6dfea;
+}
+
+/* 上方的超链接样式 */
+.toplink{
+  color: #1d5494;
+  /* 去掉下滑线 */
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+
+.toplink:hover{
+  text-decoration:  underline;
+}
+
+/*链接旁边的竖线样式  */
+.shuxian{
+font-size: 0.7;
+color: #b6b6b6;
+}

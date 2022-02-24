@@ -1,0 +1,67 @@
+body{
+  margin: 0px;
+}
+
+
+.s01{
+  margin: 10px;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+}
+
+.s02{
+ margin: 10px; 
+ background-color: #ff0000;
+ color: #ffffff;
+ border-radius: 25px;
+}
+
+.s03{
+  margin: 10px; 
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 2px 15px;
+  /* 用padding内边距解决圆角切到内容的问题 */
+ }
+ .s04{
+   background-color: #ff0000;
+   color: #ffffff;
+   padding: 20px;
+   /* 行内元素不支持盒模型相关样式
+   需要设置 display: inline-block;来启用盒模型样式支持
+  常见的行类元素：span,i, b,u,a,display默认为inline
+  常见的块元素：div,p,hn,li,section,display默认为block
+   */
+    display: inline-block;
+ }
+
+ /* 圆形 */
+ .yuan{
+display: inline-block;
+width: 50px;
+height: 50px;
+background-color: #ff0000;
+border-radius: 50%;
+ }
+ /* 圆环 */
+ .yuan1{
+display: inline-block;
+width: 50px;
+height: 50px;
+border: 1px solid #ff0000;
+border-radius: 50%; 
+ }
+
+ /* 三角形 */
+ .sj{
+   display: inline-block;
+   width: 0px;
+   height: 0px;
+  border-top: 50px solid #ff0000;
+  border-bottom: 50px solid #ff00ff;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent; 
+  /* transparent 透明 */
+
+ }

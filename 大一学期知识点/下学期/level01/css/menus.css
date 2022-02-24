@@ -1,0 +1,134 @@
+body {
+  /* min宽高表示最小宽高，也就是不能小于指定值 */
+  min-width: 100vw;
+  min-height: 100vh;
+
+  background-image: url('../images/xunlei-bg.jpg');
+  /* 背景图片在不失真的情况下，尽可能的适应大小 */
+  background-size: cover;
+  /* 如果背景图片不能完整的显示，那么会显示中间的区域 */
+  background-position: center center;
+  /* 如果页面内容出现滚动，背景不会跟随滚动 */
+  background-attachment: fixed;
+}
+/* 上方整体容器 */
+.top-box {
+  padding: 0px 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+
+.top-box img {
+  height: 2rem;
+}
+
+.top-box img:hover {
+  filter: drop-shadow(0px 0px 5px #ffffff);
+}
+
+.top-box:hover {
+  background-color: #000000;
+}
+
+/* 菜单容器 */
+.menus {
+  display: flex;
+}
+
+/* 菜单项 */
+.menu {
+  margin-left: 2rem;
+  cursor: pointer;
+}
+
+/* 菜单字的效果 */
+.menu > div:nth-child(1) {
+  padding: 1.5rem 0.5rem;
+}
+
+/* 菜单下方的线条模拟 */
+.menu > div:nth-child(2) {
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.menu:hover > div:nth-child(2) {
+  transform: scaleX(1);
+}
+
+/* 激活的菜单项 */
+.active > div:nth-child(2) {
+  transform: scaleX(1);
+}
+
+/* 下拉菜单 */
+.drop-menu {
+  position: relative;
+}
+
+.drop-menu > div:nth-child(3) {
+  position: absolute;
+  transform: scaleY(0);
+  /* 调整变形的重心 */
+  transform-origin: top center;
+  transition: transform 0.5s;
+  width: 6rem;
+  left: -1rem;
+  text-align: center;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: #000000;
+}
+/* 菜单项 */
+.drop-menu > div:nth-child(3) > div {
+  padding: 0.8rem 0px;
+  border-bottom: 1px solid #444444;
+}
+/* 最后一个不要边线 */
+.drop-menu > div:nth-child(3) > div:last-child {
+  border-width: 0px;
+}
+
+.drop-menu > div:nth-child(3) > div:hover {
+  color: #0000ff;
+}
+
+.drop-menu:hover > div:nth-child(3) {
+  transform: scaleY(1);
+}
+
+.click-menu-box{
+  display: flex;
+  padding: 1rem;
+  color:#fff;
+
+}
+
+.click-menu{
+  position: relative;
+}
+
+.click-menu> :nth-child(2){
+  position: absolute;
+  transform: scaleY(0);
+  transition: transform .5s;
+}
+
+/*  :focus-within 伪类，*/
+.click-menu:focus-within>div:nth-child(1){
+  color: #f00;
+}
+
+.click-menu:focus-within>div:nth-child(2){
+transform: scaleY(1);
+}
+
+/* 隐藏掉input元素 */
+.click-menu input{
+  width: 0px ;
+}
+

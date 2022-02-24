@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复习一：压力布局</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/fx001.css">
+</head>
+
+<body>
+  <!-- 原始对照组 -->
+  <div class="border-box">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+  <!-- 
+    最简单压力盒子效果,将一级的子元素放置在一行上，和内容多少无关
+  -->
+  <div class="border-box flex-box">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+  <!-- 水平对齐方式 -->
+  <div class="border-box flex-box box01">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+  <!-- 分对齐方式 -->
+  <div class="border-box flex-box box02">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+  <!-- 分对齐方式 -->
+  <div class="border-box flex-box box03">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+
+  <div class="border-box flex-box box04">
+    <div class="border-box">111</div>
+    <div class="border-box">222</div>
+    <div class="border-box">333</div>
+  </div>
+  <!-- 子元素的压力值，优雅就没有水平轴对齐 -->
+  <div class="border-box flex-box box04">
+    <div class="border-box flex2">111</div>
+    <div class="border-box flex1">222</div>
+    <div class="border-box flex3">333</div>
+  </div>
+  <div class="border-box flex-box box04">
+    <div class="border-box ">111</div>
+    <div class="border-box flex3">222</div>
+    <div class="border-box ">333</div>
+  </div>
+  <!-- 子元素换行排列 -->
+  <div class="flex-box border-box box05">
+    <div class="border-box">1</div>
+    <div class="border-box">2</div>
+    <div class="border-box">3</div>
+    <div class="border-box">4</div>
+    <div class="border-box">5</div>
+  </div>
+
+  <div class="flex-box box06">
+    <div class="border-box">
+      <div>ddfdsfdf</div>
+      <div>ddfdsfdf</div>
+      <div>ddfdsfdf</div>
+      <div>ddfdsfdf</div>
+      <div>ddfdsfdf</div>
+    </div>
+    <div class="border-box">111111111111</div>
+    <div class="border-box">
+      <div>!@#$$%%^^&</div>
+      <div>!@#$$%%^^&</div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

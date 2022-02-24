@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+}
+
+.ani01 {
+  color: #ff0000;
+  /* transition 过渡动画，参数一是哪一个css属性变化触发效果
+  参数二是过渡的总时长
+  */
+  transition: color 2s ease-in-out;
+}
+
+.ani01:hover {
+  color: #00ff00;
+}
+
+.ani02 {
+  width: 100px;
+  padding: 1rem;
+  border: 1px solid #ff0000;
+  text-align: center;
+  transition: width 2s;
+}
+
+.ani02:hover {
+  width: 150px;
+}
+
+.ani03 {
+  width: 100px;
+  border: 1px solid #000;
+  /* shadow 是阴影和外发光 */
+  box-shadow: 0 0 0px #999;
+  text-shadow: 0 0 0px #f00;
+  /* transition只能是一个样式或者是all全部样式*/
+  transition: all 2s;
+}
+
+.ani03:hover {
+  box-shadow: 10px 10px 0px #999;
+  text-shadow: 0 0 10px #f00;
+}
+
+.ani04 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #f00;
+}
+
+.ani04:hover {
+  animation: kf01 2s;
+}
+
+/*@keyframes 定义关键帧动画，后面是动画名称 */
+@keyframes kf01 {
+  /* 动画百分比{进度时间对应的元素样式} */
+  0% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.ani05 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #f00;
+}
+
+.ani05:hover {
+  animation: kf02 2s;
+}
+
+@keyframes kf02 {
+  0% {
+    width: 100px;
+    height: 100px;
+  }
+  50% {
+    width: 150px;
+    height: 100px;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.ani06 {
+  animation: kf03 2s infinite;
+}
+
+@keyframes kf03 {
+  0% {
+    text-shadow: 0 0 0 #f00;
+    font-size: 1rem;
+  }
+  30% {
+    font-size: 0.8rem;
+  }
+  50% {
+    text-shadow: 0 0 10px #f00;
+  }
+  70% {
+    font-size: 1.4rem;
+  }
+  100% {
+    text-shadow: 0 0 0 #f00;
+  }
+}

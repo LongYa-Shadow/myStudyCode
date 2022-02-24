@@ -1,0 +1,54 @@
+body {
+  margin: 0px;
+}
+
+// 这一段代码不论哪个iconfont项目都是一样的
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 在线版本
+@font-face {
+  font-family: 'iconfont';  /* project id 2459016 */
+  src: url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.eot');
+  src: url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2459016_b5mf7tz8dni.svg#iconfont') format('svg');
+}
+
+
+
+.font01{
+  font-size: 2rem;
+  color: #f00;
+}
+
+.font02{
+  font-size: 3rem;
+
+  &:hover{
+    color: #00f;
+  }
+}
+
+/* 离线svg版本的样式调整*/
+.svg-font{
+  width: 3rem;
+  height: 3rem;
+
+  path{
+    //通过path的fill调整颜色
+    fill: #f00;
+  }
+}
+
+// 演示图标
+.demo-icons{
+  font-size: 5rem;
+}

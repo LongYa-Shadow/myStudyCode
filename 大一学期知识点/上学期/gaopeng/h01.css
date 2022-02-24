@@ -1,0 +1,26 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.bt {
+  margin: 20px auto;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+p {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+
+.copy {
+  margin: 50px auto;
+  text-align: center;
+  font-weight: bold;
+}

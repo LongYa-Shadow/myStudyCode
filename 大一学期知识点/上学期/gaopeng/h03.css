@@ -1,0 +1,20 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.ksxm {
+  text-align: end;
+  background-color: teal;
+  color: #ffffff;
+  padding: 5px 10px 20px 30px;
+}
+
+.er{
+  padding: 30px 20px 5px;
+  font-size: 1.2rem;
+}
+.san{
+  padding: 0px 20px;
+  font-size: 1rem;
+  color: #cccccc;
+}

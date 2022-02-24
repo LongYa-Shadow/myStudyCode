@@ -1,0 +1,21 @@
+body{
+  margin: 0px;
+}
+
+.bgimg{
+margin: 10px;
+border: 1px solid #ff0000;
+width: 320px;
+height: 240px;
+background-image:  url('../images/qqmail02.png');
+background-size: 100% 100%;
+/*当背景图片超过容器大小时，显示图片中间的区域 */
+background-position: center;
+/* 背景图片大小变化以过渡的的方式进行 */
+transition:background-size 2s;
+}
+
+.bgimg:hover{
+  background-size: 150% 150%;
+  
+}

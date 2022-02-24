@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 200px auto;
+}
+
+.content > div > img {
+  width: 400px;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+.content > div > button {
+  margin: 10px 0 ;
+  width: 100px;
+  height: 50px;
+  background-color:#F5F5F5;
+  border: 1px solid #9E9E9E ;
+  color: #212121;
+  font-size: 14px;
+  border-radius: 5px;
+}

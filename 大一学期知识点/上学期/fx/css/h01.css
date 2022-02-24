@@ -1,0 +1,57 @@
+body {
+  margin: 0px;
+}
+
+.h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1.6rem 0px;
+}
+
+.h6 {
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding:1rem 0px;
+}
+
+.i{
+  font-style: italic;
+}
+
+.b{
+  font-weight: bold;
+}
+
+.u{
+  text-decoration: underline;
+}
+
+.hr{
+  border-top: 1px solid #999999;
+  padding: 0.2rem 0px;
+}
+
+/* 直接用标记名称，例如div,p,后面加样式
+表示页面上所有该名称的标记都会套用！！！！！慎用
+ */
+table{
+  margin: 4px;
+  border: 1px solid #000000;
+  /* 合并边框 */
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th{
+  border: 1px solid #000000;
+}
+
+td{
+  border: 1px solid #000000;
+}
+.ul{
+  /* 切换清单的类型样式，square：方块 
+  circle：圆圈，disc:默认圆点
+  */
+list-style-type: square;
+}

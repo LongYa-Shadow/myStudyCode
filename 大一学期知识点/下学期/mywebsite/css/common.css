@@ -1,0 +1,42 @@
+/* common ,公用css样式 */
+body{
+  margin: 0px;
+}
+
+/* 
+word-break:break-all;如果超出内容宽度会强制折断单词换行
+*/
+*{
+  word-break: break-all;
+}
+
+.min-full-page{
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.bg-img{
+  background-size: cover;
+  /* background-attachment: fixed; */
+  /* 图片上面的内容滚动 */
+  background-position: center;
+}
+
+.pd10{
+  padding: 1rem;
+}
+.pd15{
+  padding: 1.5rem;
+}
+
+.tl{
+  text-align: left;
+}
+
+.tc{
+  text-align: center;
+}
+
+.tr{
+  text-align: right;
+}

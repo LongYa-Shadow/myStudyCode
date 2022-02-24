@@ -1,0 +1,7 @@
+body{
+  background-image: url(../images/1\ \(1\).jpg);
+}
+
+.mybg{
+  backdrop-filter: blur(5px);
+}

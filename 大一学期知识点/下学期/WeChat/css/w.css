@@ -1,0 +1,157 @@
+/*顶级容器全屏，无滚动条*/
+.contianer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #dcdcdc;
+}
+
+.contianer > div:first-child {
+  background-color: #fff;
+}
+
+.contianer > div:first-child > div {
+  display: flex;
+  padding: 3rem 1rem;
+  padding-bottom: 0;
+}
+
+.contianer > div:first-child > div > div:nth-child(2) > div:first-child {
+  padding-left: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.contianer > div:first-child > div > div:nth-child(2) > div:last-child {
+  display: flex;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #929191;
+}
+
+.contianer
+  > div:first-child
+  > div
+  > div:nth-child(2)
+  > div:last-child
+  > div
+  > i:first-child {
+  padding-left: 1.8rem;
+  padding-right: 1rem;
+}
+
+.contianer > div:first-child > div:last-child {
+  padding: 0.6rem 0 0.6rem 6.5rem;
+}
+
+.contianer > div:first-child > div:last-child > i:first-child {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-right: 1rem;
+  width: 60px;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #929191;
+}
+
+.contianer > div:first-child > div:last-child > i:last-child {
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+
+}
+
+img {
+  width: 4.5rem;
+  border-radius: 0.5rem;
+  background-size: cover;
+}
+
+/* 中间的区域填满 */
+.contianer > div:nth-child(2) {
+  flex: 1;
+}
+
+.contianer > div:nth-child(2) > div {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 3rem;
+  padding: 0 1rem;
+  line-height: 3rem;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.contianer > div:nth-child(2) > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin: 0.5rem 0;
+  height: 3rem;
+  padding: 0 1rem;
+  line-height: 3rem;
+}
+
+.contianer > div:nth-child(2) > div:first-child > div:first-child > i {
+  color: #0c0;
+}
+
+.padding-right {
+  padding-right: 0.5rem;
+}
+
+.bule {
+  color: blue;
+}
+
+.greater {
+  color: #929191;
+}
+
+.contianer > div:nth-child(2) > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 3rem;
+  padding: 0 1rem;
+  margin: 0.5rem 0;
+  line-height: 3rem;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.contianer > div:last-child {
+  padding: 0.5rem;
+}
+
+/* 下方是space-around布局 */
+.contianer > div:last-child {
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+}
+
+/* 下方图标整体样式*/
+.bottom-icon {
+  text-align: center;
+}
+
+.bottom-icon .iconfont {
+  font-size: 1.2rem;
+}
+
+.bottom-icon > div:last-child {
+  font-size: 0.8rem;
+}
+
+/* 激活的图标 */
+.active {
+  color: #0c0;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js基础-事件进阶和视频播放</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="css/h12.css">
+</head>
+
+<body>
+  <select id="sel01"></select>
+  <select id="sel02"></select>
+  <select id="sel03"></select>
+  <button id="btn01">确定</button>
+  <span id="sp01"></span>
+  <hr>
+  <!-- 
+    页面事件绑定方式，on事件名称='js中function名称()'
+    事件触发时执行对应function
+  -->
+  <input type="text" onfocus="changeFocus(this);" onblur="changeBlur(this)" placeholder="焦点事件演示1">
+  <input type="text" onfocus="changeFocus(this);" onblur="changeBlur(this)" placeholder="焦点事件演示2">
+
+  <input type="text" id="txtKey" placeholder="按键事件演示">
+
+  <div id="divMouse">
+  </div>
+
+  <div class="video-box">
+    <!-- 视频标记 -->
+    <video id="myvideo" src="/video/001.mp4"></video>
+    <!-- 遮罩层 -->
+    <div class="mask">
+      <span id="spPlay">播放</span>
+    </div>
+  </div>
+
+  <script src="js/h12.js"></script>
+</body>
+
+</html>

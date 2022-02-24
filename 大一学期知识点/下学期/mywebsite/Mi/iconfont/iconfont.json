@@ -1,0 +1,100 @@
+{
+  "id": "2366898",
+  "name": "mi",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "128148",
+      "name": "话费",
+      "font_class": "icon",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1957967",
+      "name": "人工客服",
+      "font_class": "rengongkefu",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "2741840",
+      "name": "大于号",
+      "font_class": "dayuhao",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "4040314",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e7e0",
+      "unicode_decimal": 59360
+    },
+    {
+      "icon_id": "4725330",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "6259983",
+      "name": "f",
+      "font_class": "f",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "8252048",
+      "name": "扳手",
+      "font_class": "icon_repair",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "8803599",
+      "name": "时钟",
+      "font_class": "shizhong",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "10226128",
+      "name": "SIM",
+      "font_class": "SIM",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "10917025",
+      "name": "人民币",
+      "font_class": "renminbi",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "11066682",
+      "name": "个人中心 我的  人物 标准头 线性",
+      "font_class": "mine",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "14975187",
+      "name": "shop-cart",
+      "font_class": "shop-cart",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "16571673",
+      "name": "icon_企业团购",
+      "font_class": "icon_qiyetuangou",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    }
+  ]
+}

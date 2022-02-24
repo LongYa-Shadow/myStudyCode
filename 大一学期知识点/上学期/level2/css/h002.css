@@ -1,0 +1,62 @@
+body{
+  margin: 0px;
+}
+
+.mybox{
+  margin: 5px;
+  border: 1px solid #ff0000;
+}
+
+.other{
+  border-color: #0000ff;
+  color: #ff0000;
+}
+
+.flex01{
+  /* display：flex;压力盒子
+  会将第一级的子元素强制压迫到一行上！！！！
+  */
+  display: flex;
+}
+
+.flex02{
+  display: flex;
+  /*  justify-content:一级子元素水平轴对齐方式
+  space-between：分散对齐，空白平均分配在元素之间
+  spaca-rounde：空白平均分配在元素两侧
+  左：flex-start,中：center，右：flex-end
+   */
+  justify-content:space-between ;
+}
+
+.flex03{
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex04{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex05{
+  display: flex;
+  justify-content: center;
+}
+
+.flex06{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex07{
+  display: inline-block;
+  justify-content: center;
+}
+
+.flex08{
+  display: flex;
+  /* 垂直轴对齐方式 */
+  align-items: center;
+  justify-content: space-around;
+}

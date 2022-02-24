@@ -1,0 +1,72 @@
+.menus{
+  position: fixed;
+  bottom: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.menus>div{
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+}
+
+/* 菜单项容器和相关样式 */
+.menu{
+  display: flex;  
+
+}
+
+.menu>div{
+width: 6rem;
+padding: 1rem 0;
+text-align: center;
+}
+
+.menu>div:hover{
+  cursor: pointer;
+  background-color: #000;
+}
+
+/* 线条的部分 */
+.line{
+  width: 6rem;
+  height: 3px;
+  background-color: #fff;
+  transition: .5s;
+}
+/* 线条的位置 */
+.move01{
+  transform: translateX(0%);
+}
+.move02{
+  transform: translateX(100%);
+}
+.move03{
+  transform: translateX(200%);
+}
+.move04{
+  transform: translateX(300%);
+}
+
+/* 背景变化的部分 */
+.bg-div{
+  width: 100vw;
+  height: 100vh;
+  transition: backgrond-image .5s;
+}
+
+.bg01{
+  background-image: url(../image/1\ \(19\).jpg);
+}
+.bg02{
+  background-image: url(../image/1\ \(21\).jpg);
+}
+.bg03{
+  background-image: url(../image/1\ \(27\).jpg);
+}
+.bg04{
+  background-image: url(../image/1\ \(28\).jpg);
+}
+
+

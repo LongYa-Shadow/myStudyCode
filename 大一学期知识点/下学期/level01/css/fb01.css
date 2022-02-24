@@ -1,0 +1,13 @@
+.myflex{
+  display: flex;
+  /* 将元素高宽设置成浏览器可视区域高宽 */
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.myflex > div{
+  border: 1px solid #f00;
+  margin-top: 10rem;
+}

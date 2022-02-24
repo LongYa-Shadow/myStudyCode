@@ -1,0 +1,42 @@
+body {
+  margin: 0px;
+}
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'iconfont'; /* project id 2469697 */
+  src: url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.eot');
+  src: url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.eot?#iefix')
+      format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2469697_x3fpcpzxerq.svg#iconfont') format('svg');
+}
+
+.font01 {
+  font-size: 2rem;
+  color: #f00;
+}
+.font02 {
+  font-size: 3rem;
+}
+.font02:hover {
+  color: #00f;
+}
+/* 离线svg版本的样式调整*/
+.svg-font {
+  width: 3rem;
+  height: 3rem;
+}
+.svg-font path {
+  fill: #f00;
+}
+.demo-icons {
+  font-size: 5rem;
+}

@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+}
+
+.watch {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 表盘的底色区域 */
+.watch > div {
+  width: 680px;
+  height: 680px;
+  background-color: #555;
+  clip-path: circle(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 表盘中间区域 */
+.container {
+  width: 85%;
+  height: 85%;
+  background-color: #e0e6ef;
+  clip-path: circle(50%);
+  /* 上中下布局 */
+  display: flex;
+  flex-direction: column;
+}
+
+.container_top {
+  flex: 1;
+  border-bottom: 4px solid #333;
+  display: flex;
+}
+
+/* 上左 */
+.container_top_left {
+  flex: 4.5;
+  /* 靠下右 */
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-weight: bold;
+  font-size: 2rem;
+  /* 字符间距 */
+  letter-spacing: 0.2rem;
+}
+
+.pd02 {
+  padding: 0.2rem;
+}
+
+/* 上右 */
+.container_top_right {
+  flex: 5.5;
+  border-left: 4px solid #333;
+  /* 下沉到底部 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.container_top_right_sun {
+  display: flex;
+  align-items: center;
+}
+/* 下方中间区域是两行 */
+.cbc {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 下方第一行 */
+.cbc > div:first-child {
+  border-right: 4px solid #333;
+  border-bottom: 4px solid #333;
+  padding-left: 2rem;
+  flex: 1;
+}
+
+/* 下方第二行 */
+.cbc > div:last-child {
+  border-left: 4px solid #333;
+}
+
+.container_center {
+  flex: 4;
+  /* 上中下布局，中间填满 */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container_center > div:first-child {
+  padding: 0.5rem;
+}
+
+.container_center > div:first-child > span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.container_center > div:first-child > span:last-child {
+  font-size: 1.6rem;
+}
+
+/* 中间区域的中间 */
+.ccc {
+  display: flex;
+}
+
+.ccc>div:nth-child(1){
+  flex: 1;
+}
+
+.ccc>div:nth-child(3){
+  flex: 1;
+}
+
+/* 中间图片容器 */
+.ccc>div:nth-child(2){
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ccc>div:nth-child(2) >div{
+  width: 60%;
+}
+
+/* 中间图片样式自适应 */
+.ccc > div:nth-child(2) img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+  
+.container_bottom {
+  flex: 1;
+  border-top: 4px solid #333;
+  display: flex;
+  justify-content: center;
+  font: 2rem bold;
+}

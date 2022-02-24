@@ -1,0 +1,27 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+/* 用来模拟外边框效果 */
+.myinput{
+  display: inline-block;
+  margin: 5px;
+  border: 2px solid #acacac;
+  padding: 5px 8px ;
+  border-radius: 2px;
+}
+
+.input{
+  /* 去掉input元素的外边框 */
+  border-width: 0px;
+  outline: none;
+}
+
+/* 
+:focus-within,伪类。
+元素或元素里面子元素拥有焦点的时候
+*/
+.myinput:focus-within{
+  border-color: #0000ff;
+}

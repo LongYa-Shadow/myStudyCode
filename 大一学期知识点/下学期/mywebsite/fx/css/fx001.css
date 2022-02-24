@@ -1,0 +1,63 @@
+/* 压力盒子 */
+.flex-box {
+  display: flex;
+}
+
+/* 带边框的盒子 */
+.border-box {
+  /* 边框算到元素的总宽度里面 */
+  box-sizing: border-box;
+  border: 1px solid #f00;
+}
+
+.box01 {
+  /* 分散对齐 */
+  justify-content: space-between;
+}
+
+.box02 {
+  /* 空白分配在每个子元素的两侧 */
+  justify-content: space-around;
+}
+
+.box03 {
+  /* 空白平均分配 */
+  justify-content: space-evenly;
+}
+.box04 {
+  /* 左中右 */
+  /* flex-start ,flex-end */
+  justify-content: center;
+}
+/* 注意！压力值是压力盒子中一级子元素的样式
+  压力的大的占用空间也就更大，但是不是绝对的按照比例分配
+  比如空间没有多余的地方，如果只有一个压力值，会沾满所有空白
+*/
+.flex1 {
+  flex: 1;
+}
+.flex2 {
+  flex: 2;
+}
+.flex3 {
+  flex: 3;
+}
+
+.box05 {
+  /* 子元素总宽度超过容器时，是否换行显示 */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.box05 > div {
+  width: 30.3333333%;
+}
+
+/* 垂直抽对齐(交叉轴) */
+.box06 {
+  /*  stretch 默认值，将元素的长度设置为相同的值
+      flex-start 元素不会拉伸，沿着辅轴起边对齐
+      flex-end   沿着辅轴的终边对齐
+      center  居中对齐  
+      baseline 基线对齐 */
+  align-items: center;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/h02.css">
+</head>
+
+<body>
+  <label>
+    用户名： <input type="text" placeholder="请输入用户名">
+  </label>
+  <span class="myinput">
+    <input class="input" type="password" placeholder="请输入">
+  </span>
+
+  <label>
+    <input type="radio" name="xb">男
+  </label>
+  <label>
+    <input type="radio" name="xb">女
+  </label>
+  <label>
+    <input type="radio" name="xb" checked>保密
+  </label>
+  <!-- 
+    label,input分离式写法
+    通过for和id匹配，id全页面不能有两个相同的！！！！!
+   -->
+  <label for="xl01">本科</label>
+  <input type="radio" name="xl" id="xl01">
+  <label for="xl02">大专</label>
+  <input type="radio" name="xl" id="xl02">
+
+  <label>
+    <input type="checkbox" name="" id="chkAll">全选
+  </label>
+  <label>
+    <input type="checkbox" name="" id="chkRev">反选
+  </label>
+  <label>
+    <input type="checkbox" name="ah">游戏
+  </label>
+  <label>
+    <input type="checkbox" name="ah" checked>音乐
+  </label>
+  <label>
+    <input type="checkbox" name="ah" checked>游泳
+  </label>
+  <script>
+    let chkAll = document.getElementById('chkAll')
+    let chkRev = document.getElementById('chkRev')
+    let ah = document.getElementsByName('ah')
+
+    chkAll.addEventListener('click', function () {
+      for (let i = 0; i < ah.length; i++) {
+        ah[i].checked = chkAll.checked;
+      }
+    });
+    chkRev.addEventListener('click', function () {
+      for (let i = 0; i < ah.length; i++) {
+        ah[i].checked = !ah[i].checked;
+      }
+    });
+
+
+  </script>
+
+  <a href="https://huhuiyu.top"></a>
+  <span onclick="location='https://huhuiyu.top'">黑暗骑士</span>
+
+
+  <textarea cols="80" rows="10"></textarea>
+
+  <select>
+    <option value="1">湖南</option>
+    <option value="2">湖北</option>
+    <option value="3">广东</option>
+    <option value="4">广西</option>
+  </select>
+
+  <select id="selYear"></select>
+
+  <script>
+    let selYear = document.getElementById('selYear')
+    let year = new Date().getFullYear();
+
+    for (let i = 1970; i <= year; i++) {
+      let op = document.createElement('option');
+      op.setAttribute('value', i);
+      op.append(i + '年');
+      selYear.append(op);
+    }
+    selYear.value = 2003;
+
+  </script>
+  <!-- 
+    表单元素
+   -->
+  <form action="form.html" method="GET">
+    <input type="text" name="wd">
+    <input type="submit">
+  </form>
+
+</body>
+
+</html>

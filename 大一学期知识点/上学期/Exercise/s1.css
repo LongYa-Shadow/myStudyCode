@@ -1,0 +1,30 @@
+body{
+  margin: 0px;
+}
+.bg{
+  background-image: url('pexels-david-besh-884788.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+.bg1{
+  background-image: url('pexels-julian-paolo-dayag-1673973.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+.style01{
+  color: #999999;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.style02{
+  color: #003366;
+  font-size:1rem ;
+  
+}
+.style03{
+  color: #333333;
+  font: size 1rem;;
+}
+.style04{
+  font-size: 1.5rem;
+}

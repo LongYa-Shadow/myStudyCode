@@ -1,0 +1,98 @@
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-box {
+  margin: 5px;
+  width: 10rem;
+  height: 10rem;
+  background-image: url(../images/wallhaven-rd3pjw_1920x1080.png);
+  background-size: cover;
+}
+
+.blur_box {
+  /* filter过滤器，就是各种特性滤镜，blur是模糊，参数是模糊的程度，越大越模糊 */
+  filter: blur(1px);
+}
+
+.gray-box {
+  /* 灰度，100%就是黑白效果，0%是正常 */
+  filter: grayscale(80%);
+}
+
+.brigth-box {
+  /* 亮度，1是正常，小暗大亮 */
+  filter: brightness(1.5);
+}
+
+.contranst-box{
+  filter: contrast(200%);
+}
+
+.hue-box{
+  filter: hue-rotate(40deg);
+}
+
+.combo-box{
+  filter: invert(80%); opacity: 50%;
+}
+
+.cilp-box01{
+  margin: 5px;
+  width: 16rem;
+  height: 9rem;
+  background-image: url(../images/wallhaven-rddgwm_1920x1080.png);
+  background-size: cover;
+  clip-path: polygon(50% 0,0 100%,100% 100%);
+}
+.cilp-box02{
+  margin: 5px;
+  width: 16rem;
+  height: 9rem;
+  background-image: url(../images/wallhaven-pk8oo9_1920x1080.png);
+  background-size: cover;
+  clip-path: polygon(50% 0,10% 50%,50% 100%,90% 50% );
+}
+
+.cilp-box03{
+  margin: 5px;
+  width: 16rem;
+  clip-path: polygon(50% 0,100% 50%, 50% 100%,0 50%);
+}
+
+.cilp-box03 img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cilp-box04{
+width: 16rem;
+margin: 5px;
+overflow: hidden;
+/* clip-path: polygon(0 0,0 100%,100% 100%,100% 0); */
+}
+
+.cilp-box04 img{
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 1s;
+}
+
+.cilp-box04:hover img{
+  transform: scale(1.5);
+}
+
+
+.cilp-box05{
+  margin: 5px;
+  width: 10rem;
+  height: 10rem;
+  background-image: url(../images/wallhaven-oxkjgm_1920x1080.png);
+  background-size: cover;
+  background-position: center;
+  clip-path: circle(50%);
+}

@@ -1,0 +1,58 @@
+.s01 {
+  /* 
+  border：边框，值是多个组合
+  例如：宽度 2px
+      边框的线条类型 solid（实心）double（双线条）。。。
+      颜色 #ff0000
+   */
+  border: 2px solid #ff0000;
+}
+.s02 {
+  border: 0.2rem dashed #ff00ff;
+}
+.s03 {
+  border: 2px solid #ff0000;
+  /* margin：外边距，元素和它外面的元素分開距離*/
+  margin: 20px;
+  /* paddin：内边距，元素里面的内容和元素分開距離 */
+  padding: 10px;
+}
+.s04{
+  border: 2px solid #ff0000;
+  /* margin和padding可以有两个参数和四个参数的版本 
+  分别是上下和左右已经上右下左
+  */
+  margin: 10px 20px;
+  padding: 10px 20px 30px 40px;
+
+}
+.s05{
+  text-emphasis: none;
+  color: #ff0000;
+  border: 10px solid #0000ff;
+  transition: all 4s;
+}
+/* ：hover 伪类，表示当鼠标悬停在元素上时套用的样式 */
+.s05:hover{
+/* border—width：单独设置边框宽度 */
+  border-width: 0px;
+}
+.s06{
+  text-emphasis: none;
+  color: #ff0000;
+  border: 10px solid #0000ff;
+  /* transition: all 4s; */
+}
+/* ：hover 伪类，表示当鼠标悬停在元素上时套用的样式 */
+.s06:hover{
+/* border—color：单独设置边框的颜色，transparent：透明 */
+  border-color: transparent;
+}
+.s07{
+  color: #0000ff;
+}
+.s07:hover{
+  /* cursor:鼠标样式，pointer：超链接的手型样子 */
+  cursor: pointer;
+  text-decoration: underline;
+}

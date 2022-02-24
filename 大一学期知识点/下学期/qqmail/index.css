@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+}
+
+.header {
+  /* 头部区域的布局和样式 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 样式部分 */
+  background-color: #eff4fa;
+  border-bottom: 1px solid #d6dfea;
+  padding: .7rem 2.5rem;
+  color: #d6d6d6;
+}
+
+/* 选择器1 选择器2表示1里面2
+  列如。header表示class=header的元素
+  a表示超链接
+  .header a表示class=header的元素里面的超链接
+*/
+
+.header a {
+  color: #1d5494;
+  text-decoration: none;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.header a:hover{
+  text-decoration: underline;
+}
+
+/* 主体部分布局和样式 */
+.main{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 3rem;
+}
+
+.mail-text{
+/* 邮箱文字样式 */
+  color: #6595c8;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.main-center{
+  /* 中间图片上方留白 */
+  height: 20rem;
+  padding-top:5rem ;
+}
+
+.main-left{
+  /* 左侧文字下方留白 */
+  height: 20rem;
+  padding-bottom: 5rem;
+}
+
+
+.form_div {
+  border: 1px solid #a0b1c4;
+  border-radius: 2px;
+}
+
+.form_title{
+  display: flex;
+  padding:0.5rem 0px ;
+  justify-content: space-around;
+  border-bottom: 1px solid #a0b1c4  ;
+  background-color: #f9fbfe;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.disable_text{
+  color: #999;
+}
+
+/* 下方的区域 */
+.form_main_div{
+  padding: 1rem;
+}
+
+/* :focus-within当元素获取焦点时 */
+.input_div:focus-within{
+  border-color: #4892e7;
+}
+
+/* 模拟输入表单元素 */
+.input_div{
+  border: 1px solid #96a5b4;
+  border-radius: 1px;
+  padding:0.1rem 0.3rem ;
+}
+
+.input_div input{
+  outline: none;
+  border-width: 0px;
+}
+
+.mr_div{
+  margin-bottom: 00.5rem;
+}
+
+.button_div{
+  background-color: #4892e7;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: #fff;
+  padding:0.2rem 0px ;
+}
+
+.button_div:hover{
+  background-color: #58a3f8;
+  /* 鼠标变成超链接手指样式 */
+  cursor: pointer;
+}
+
+.qr_div{
+  color: #225592;
+  font-size: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-style: 12px;
+  clear: both;
+  color: #b6b6b6;
+  line-height: 36px;
+  text-align: center;
+  border-top: 1px solid #d6dfea;
+  font-size: 12px;
+  background-color: #eff4fa;
+}
+
+
+.footer a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #1d5494;
+}
+
+.footer span {
+  color: #868686;
+  font-size: 12px;
+}
+
+.footer a:hover{
+  text-decoration: underline;
+}
