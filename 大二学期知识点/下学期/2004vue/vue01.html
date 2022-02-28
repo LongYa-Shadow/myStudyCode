@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 入门</title>
+</head>
+
+<body>
+    <!-- vue实例需要绑定一个页面元素确定作用的范围 -->
+    <div id="app">
+        <!-- 通过值表达式：{{data中变量值}}显示值到页面 -->
+
+        <h1>{{info}}</h1>
+        <span>注入到任意位置==>{{info}}</span>
+        <br> 也可以直接替换元素的内容
+        <!-- 也可以通过vue扩展属性(directive)
+        v-text="data中的变量值"将元素的内容绑定成变量值
+        -->
+        <span v-text="info">aaa</span>
+        <hr>
+        <span title="这个是标准的title属性">原生title</span> ====
+        <!-- :属性="data中的变量",
+            可以将变量的值绑定给对应的属性
+        -->
+        <span :title="info">vue注入的属性</span>
+
+        <hr>
+        <!-- 
+          v-model一般用于表单元素
+        作用是双向绑定页面元素的值到data中的变量!!!
+        也就是页面输入发生的变化会同步到data的变量值
+        反过来data中对应的变化值变化也会同步到页面
+
+         -->
+        <input type="text" placeholder="用户名" v-model="userinfo.username">
+        <input type="password" placeholder="密码" v-model="userinfo.password"> {{userinfo}}
+    </div>
+
+
+    <script src="lib/vue.min.js"></script>
+    <script src="js/vue01.js"></script>
+</body>
+
+</html>
