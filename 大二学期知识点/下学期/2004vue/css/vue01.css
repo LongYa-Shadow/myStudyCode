@@ -1,0 +1,33 @@
+/* 菜单样式 */
+
+.menus {
+    padding: 1rem;
+    text-align: center;
+}
+
+.menus a {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.menus a:hover {
+    text-decoration: underline;
+}
+
+.tabs {
+    text-align: center;
+}
+
+.tabs>span {
+    display: inline-block;
+    margin: .5rem 1rem;
+    border: 1px solid #bfa;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.tabs>span.active {
+    background-color: pink;
+    color: #fff;
+}

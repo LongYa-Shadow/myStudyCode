@@ -13,7 +13,25 @@ new Vue({
             userinfo: {
                 username: 'admin',
                 password: ''
-            }
+            },
+            //模拟菜单的数据
+            menus: [
+                { link: 'https://gaopeng623.top', text: 'shadow的网站' },
+                { link: 'https:/huhuiyu.top', text: '黑暗骑士网站' }
+            ],
+            //用于面板切换效果的变量，记录当前点击的面板
+
+            tab: 1
+        }
+    },
+    //事件定义部分
+    methods: {
+        //定义方法的名称，供页面调用
+        showUser() {
+            //在methods中定义的方法(function)中
+            //可以通过this关键字直接拿到data中的数据
+            let info = JSON.stringify(this.userinfo)
+            alert(info)
         }
     }
 })

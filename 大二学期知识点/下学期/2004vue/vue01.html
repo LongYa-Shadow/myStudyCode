@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue 入门</title>
+    <link rel="stylesheet" href="./css/vue01.css">
 </head>
 
 <body>
@@ -26,17 +27,72 @@
             可以将变量的值绑定给对应的属性
         -->
         <span :title="info">vue注入的属性</span>
-
         <hr>
         <!-- 
-          v-model一般用于表单元素
+        v-model一般用于表单元素
         作用是双向绑定页面元素的值到data中的变量!!!
         也就是页面输入发生的变化会同步到data的变量值
         反过来data中对应的变化值变化也会同步到页面
 
-         -->
+        -->
         <input type="text" placeholder="用户名" v-model="userinfo.username">
-        <input type="password" placeholder="密码" v-model="userinfo.password"> {{userinfo}}
+        <input type="password" placeholder="密码" v-model="userinfo.password">
+        <!-- 
+            @事件名称="methods中定义function名称"
+            表示当事件发生的时候执行对应的fuction
+
+        -->
+        <button @click="showUser">显示数据</button> {{userinfo}}
+
+        <hr>
+        <h1>模拟菜单</h1>
+        <!-- 
+            v-for的作用循环生成页面模板
+            里面的这是循环表达式 每一笔循环值变量 in 数组或者其他可迭代对象
+            然后在v-for作用的页面模板中可以使用循环变量
+            v-for="i  in menus"表示迭代menus中值，循环的每一笔值命名为i
+        -->
+        <div class="menus">
+            <a v-for="i  in menus" :href="i.link">{{i.text}}</a>
+        </div>
+
+        <!-- 最简单的if效果 -->
+        <div class="tabs">
+            <!-- {{tab}} -->
+            <!-- 
+        事件的基本使用：
+			1.使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名；
+			2.事件的回调需要配置在methods对象中，最终会在vm上；
+			3.methods中配置的函数，不要用箭头函数！否则this就不是vm了；
+			4.methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象；
+			5.@click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参；
+        
+            -->
+            <span :class="{active:tab==1}" @click="tab=1">模块一</span>
+            <!-- 
+                :class属性注入和普通的一样，可以和标准的class属性同时存在
+                class的注入式通过classList方法来动态修改class的值
+                而不是简单替换
+                里面的JSON表达式的意义
+                {
+                    要动态套用的class名称，逻辑表达式,...
+                }
+                逻辑表达为真,对应的class会动态添加
+                为假则会将对应class动态移除
+            -->
+            <span :class="{active:tab==2}" @click="tab=2">模块二</span>
+            <span :class="{active:tab==3}" @click="tab=3">模块三</span>
+        </div>
+        <hr>
+        <!-- 
+            v-if是可以控制所在的页面模板是否出现(物理级的，不是显示隐藏)
+            v-if的值时逻辑表达式，同理参与判断的变量是vue里面的
+            逻辑表达式为真，页面模板才会出现在对应的位置
+            否则该页面模板会移除dom，消去不见
+        -->
+        <div v-if="tab==1">模块一内容</div>
+        <div v-if="tab==2">LongYa_Shadow</div>
+        <div v-if="tab==3">不要抬头好看</div>
     </div>
 
 
