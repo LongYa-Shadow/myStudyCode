@@ -42,7 +42,7 @@
                 }
             })
             promise.then((response) => {
-                console.log('应答结果', response);
+                // console.log('应答结果', response);
                 //保存token
                 this.saveToken(response.data)
                 callback(response.data)

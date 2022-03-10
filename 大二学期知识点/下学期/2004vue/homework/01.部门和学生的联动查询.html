@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01.部门和学生的联动查询</title>
+</head>
+
+<body>
+    <div id="app">
+        部门：<select v-model="deptId" @change="queryEmployeeByDept">
+          <option v-for="d in deptList" :value="d.deptId" :key="d.deptId">
+            {{d.deptName}}
+          </option>
+        </select> 员工：
+        <select v-model="employeeId">
+          <option v-for="e in employeeList" :value="e.employeeId" :key="e.employeeId">
+            {{e.employeeName}}
+          </option>
+        </select>
+    </div>
+
+
+
+    <script src="../lib/axios.min.js"></script>
+    <script src="../lib/qs.min.js"></script>
+    <script src="../lib/spark-md5.js"></script>
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="js/1.部门和学生的联动查询.js"></script>
+</body>
+
+</html>
