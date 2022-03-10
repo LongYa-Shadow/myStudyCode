@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue数据联动</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <div> {{title}} </div>
+        </div>
+        <div>
+            <!--  @change="queryCity"是下拉列表选中值变化 -->
+            省份:
+            <select v-model="pid" @change="queryCity">
+                <option v-for="d in plist" :value="d.pid" :key="d.pid">
+            {{d.province}}  
+                </option>
+            </select>
+            <!-- {{pid}}==>{{plist}}  -->
+            城市:
+            <select v-model="cid">
+                <option v-for="c in clist" :value="c.cid" :key="c.cid">
+                    {{c.city}}
+                </option>
+            <!-- </select> {{cid}}==>{{clist}} -->
+        </div>
+    </div>
+
+    <!-- 
+
+        作业1：完成班级和学生的联动查询
+        作业2：完成部门和员工的联动查询
+        挑战：地区联动查询
+ -->
+
+    <script src="lib/axios.min.js"></script>
+    <script src="lib/qs.min.js"></script>
+    <script src="lib/spark-md5.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="js/ajax.js"></script>
+
+    <script src="js/vue03.js"></script>
+</body>
+
+</html>
