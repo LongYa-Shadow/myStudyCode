@@ -12,6 +12,8 @@ const vm = new Vue({
             district: [], //区/县 3
             daid: 0,
             street: [], //街道 4
+
+
         }
     },
     methods: {
@@ -25,7 +27,6 @@ const vm = new Vue({
             })
         },
         queryCity() {
-            console.log(this.aid, "---");
             // console.log(this.pid);
             ajax.send('/linkinfo/queryAreaByPid', { pid: this.paid }, (data) => {
                 this.city = data.list
