@@ -1,6 +1,4 @@
 //ajax封装
-
-
 //ajax的关键要素
 //1：api的url地址
 //2：请求参数
@@ -60,3 +58,9 @@
     }
     window.ajax = ajax
 })()
+
+//MD5加密
+function md5(info) {
+    return SparkMD5.hash(info)
+}
+Vue.config.devtools = true

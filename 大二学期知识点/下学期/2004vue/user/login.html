@@ -13,9 +13,10 @@
         <div>{{title}}</div>
         <div>
             <input type="text" v-model="user.username" placeholder="登录名">
-            <input type="text" v-model="user.password" placeholder="密码">
+            <input type="password" v-model="user.password" placeholder="密码">
             <button @click="login">登录</button>
             <button>重置</button>
+            <a href="reg.html">我要注册</a>
             <span>{{message}}</span>
         </div>
     </div>

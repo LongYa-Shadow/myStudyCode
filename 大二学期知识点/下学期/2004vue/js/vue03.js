@@ -41,6 +41,12 @@ new Vue({
             }, "post")
         }
     },
+    //computed表示计算属性，里面定义的方法都必须要有返回值效果和data一样,可以直接在页面显示
+    computed: {
+        province() {
+            return "省份变化:" + this.pid
+        }
+    },
     created() {
         //创建成功后就调用查询数据的方法
         this.queryProvince()
