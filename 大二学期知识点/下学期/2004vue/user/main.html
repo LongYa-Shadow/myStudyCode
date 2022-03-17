@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户首页</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            {{title}}
+            <div>
+                欢迎：{{tbUser.nickname}}
+                <button @click="logout">安全退出</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/axios.min.js"></script>
+    <script src="../lib/qs.min.js"></script>
+    <script src="../lib/spark-md5.js"></script>
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
