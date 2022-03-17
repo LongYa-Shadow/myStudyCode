@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部门管理</title>
+    <link rel="stylesheet" href="../3rd/layui/css/layui.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <div>{{title}}</div>
+        <!-- 数据显示部分 -->
+        <table v-if="!loading" class="layui-table">
+            <thead>
+                <tr>
+                    <th>部门编号</th>
+                    <th>名称</th>
+                    <th>描述</th>
+                    <th>最后描述时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="d in list">
+                    <td>{{d.deptId}}</td>
+                    <td>{{d.deptName}}</td>
+                    <td>{{d.deptInfo}}</td>
+                    <td>{{d.lastupdate}}</td>
+                    <td><button class="layui-btn layui-btn-disabled">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 分页样式 -->
+        <div v-if="!loading">
+            <a href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a> |
+            <a href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a> | 当前页/总页数/记录数({{page.pageNumber}}|{{page.pageCount}}|{{page.total}}) 跳转
+            <select v-model="page.pageNumber" @change="query">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <div v-if="loading">正在加载</div>
+
+    </div>
+
+
+    <script src="../lib/axios.min.js"></script>
+    <script src="../lib/qs.min.js"></script>
+    <script src="../lib/spark-md5.js"></script>
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="../3rd/layui/layui.js"></script>
+    <script src="js/dept.js"></script>
+</body>
+
+</html>
