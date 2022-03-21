@@ -18,21 +18,20 @@
     <div id="app">
         <div>{{maxLevel}}</div>
         <span v-for=" (q,i) in area">
-                <select  v-if="i<=maxLevel " v-model="q.aid " @change="query(q.aid,i+1) ">
-                    <option v-for="d in area[i].list " :value="d.aid ">
-                        {{d.name}}
-                    </option>
-                </select>
-            </span>
+            <select v-if="i<=maxLevel " v-model="q.aid " @change="query(q.aid,i+1) ">
+                <option v-for="d in area[i].list " :value="d.aid ">
+                    {{d.name}}
+                </option>
+            </select>
+        </span>
         <div>{{area[0].aid}}--{{area[1].aid}}--{{area[2].aid}}--{{area[3].aid}}</div>
     </div>
-
-    <script src="../lib/axios.min.js "></script>
-    <script src="../lib/qs.min.js "></script>
-    <script src="../lib/spark-md5.js "></script>
-    <script src="../lib/vue.min.js "></script>
-    <script src="../js/ajax.js "></script>
-    <script src="../3rd/layui/layui.js "></script>
+    <script src="lib/axios.min.js"></script>
+    <script src="lib/qs.min.js"></script>
+    <script src="lib/spark-md5.js"></script>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/ajax.js"></script>
+    <script src="./3rd/layui/layui.js"></script>
     <script src="./js/04.地区联动查询递归.js "></script>
 
 
