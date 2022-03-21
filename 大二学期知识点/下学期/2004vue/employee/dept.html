@@ -2,61 +2,142 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>部门管理</title>
-    <link rel="stylesheet" href="../3rd/layui/css/layui.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>部门管理</title>
+  <link rel="stylesheet" href="../3rd/layui/css/layui.css" />
+  <link rel="stylesheet" href="css/dept.css">
+  <style>
+    .spinner-border {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      /* transform: translateX(-50%); */
+      z-index: 100;
+    }
+
+    .spinner-border {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      vertical-align: -0.125em;
+      border: 0.25em solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: 0.75s linear infinite spinner-border;
+      animation: 0.75s linear infinite spinner-border;
+      animation-duration: 0.75s;
+      animation-timing-function: linear;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      animation-name: spinner-border;
+    }
+
+
+    @keyframes spinner-border {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .tc {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="app">
+    <h1 class="tc">{{title}}</h1>
+    <div class="layui-form-item">
 
-    <div id="app">
-        <div>{{title}}</div>
-        <!-- 数据显示部分 -->
-        <table v-if="!loading" class="layui-table">
-            <thead>
-                <tr>
-                    <th>部门编号</th>
-                    <th>名称</th>
-                    <th>描述</th>
-                    <th>最后描述时间</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="d in list">
-                    <td>{{d.deptId}}</td>
-                    <td>{{d.deptName}}</td>
-                    <td>{{d.deptInfo}}</td>
-                    <td>{{d.lastupdate}}</td>
-                    <td><button class="layui-btn layui-btn-disabled">删除</button></td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- 分页样式 -->
-        <div v-if="!loading">
-            <a href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a> |
-            <a href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a> | 当前页/总页数/记录数({{page.pageNumber}}|{{page.pageCount}}|{{page.total}}) 跳转
-            <select v-model="page.pageNumber" @change="query">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
+
+      <!-- 添加的表单 -->
+      <div class="layui-inline">
+        <input type="text" v-model="addInfo.deptName" placeholder="名称" class="layui-input layui-input-inline">
+        <input type="text" v-model="addInfo.deptInfo" placeholder="描述" class="layui-input layui-input-inline">
+        <button class="layui-btn" @click="add">添加部门</button>
+      </div>
+      <!-- 修改的表单 -->
+      <transition name="fade">
+        <div class="layui-inline" v-if="visible">
+          <input type="text" v-model="modifyInfo.deptName" placeholder="名称" class="layui-input layui-input-inline">
+          <input type="text" v-model="modifyInfo.deptInfo" placeholder="描述" class="layui-input layui-input-inline">
+          <button class="layui-btn" @click="modify">修改部门</button>
+          <button class="layui-btn" @click="visible=false">取消修改</button>
         </div>
-
-        <div v-if="loading">正在加载</div>
-
+      </transition>
+    </div>
+    <!-- 数据显示部分 -->
+    <table v-if="!loading" class="layui-table">
+      <thead>
+        <tr>
+          <th>部门编号</th>
+          <th>名称</th>
+          <th>描述</th>
+          <th>最后描述时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="d in list">
+          <td>{{d.deptId}}</td>
+          <td>{{d.deptName}}</td>
+          <td>{{d.deptInfo}}</td>
+          <td>
+            {{getTime(d.lastupdate)}}
+            <br>
+            {{d.lastupdate | formatData}}
+          </td>
+          <td>
+            <button class="layui-btn  layui-btn-danger" @click="del(d)">删除</button>
+            <button @click="showModify(d)" class="layui-btn  layui-btn-danger">修改</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 分页样式 -->
+    <div v-if="!loading">
+      <a href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a>
+      |
+      <a href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a>
+      |
+      当前页/总页数/记录数({{page.pageNumber}}|{{page.pageCount}}|{{page.total}})
+      跳转
+      <select v-model="page.pageNumber" @change="query">
+        <option v-for="y in page.pageCount" value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
     </div>
 
+    <div v-if="loading" class="spinner-border"></div>
+    <!-- 修改的表单 -->
+    {{modifyInfo}}
 
-    <script src="../lib/axios.min.js"></script>
-    <script src="../lib/qs.min.js"></script>
-    <script src="../lib/spark-md5.js"></script>
-    <script src="../lib/vue.min.js"></script>
-    <script src="../js/ajax.js"></script>
-    <script src="../3rd/layui/layui.js"></script>
-    <script src="js/dept.js"></script>
+
+  </div>
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  </fieldset>
+
+  <div id="demo7"></div>
+
+
+
+  <script src="../lib/axios.min.js"></script>
+  <script src="../lib/qs.min.js"></script>
+  <script src="../lib/spark-md5.js"></script>
+  <script src="../lib/vue.min.js"></script>
+  <script src="../js/ajax.js"></script>
+  <script src="../3rd/layui/layui.js"></script>
+  <script src="../js/dayjs.min.js"></script>
+  <script src="../js/myfilter.js"></script>
+  <script src="js/dept.js"></script>
 </body>
 
 </html>

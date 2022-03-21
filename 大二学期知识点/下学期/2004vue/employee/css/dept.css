@@ -1,0 +1,16 @@
+/* 
+    enter的两个是进入时的两个形态变化
+    leave的两个是离开时的两个形态变化
+  .页面过渡指令的名称name属性-enter-active
+  .页面过渡指令的名称name属性-leave-active
+  .页面过渡指令的名称name属性-enter
+  .页面过渡指令的名称name属性-leave-to
+*/
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
