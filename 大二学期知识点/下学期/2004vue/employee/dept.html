@@ -53,9 +53,13 @@
 <body>
   <div id="app">
     <h1 class="tc">{{title}}</h1>
+    <!-- 查询的表单 -->
+    <div class="layui-form-item ">
+      <input type="text" v-model="queryInfo.deptName" class="layui-input layui-input-inline ">
+      <button class="layui-btn layui-col-md2" @click="query">查询</button>
+    </div>
+
     <div class="layui-form-item">
-
-
       <!-- 添加的表单 -->
       <div class="layui-inline">
         <input type="text" v-model="addInfo.deptName" placeholder="名称" class="layui-input layui-input-inline">
@@ -92,6 +96,8 @@
             {{getTime(d.lastupdate)}}
             <br>
             {{d.lastupdate | formatData}}
+            <br>
+            {{d.lastupdate | formatData('YYYY-MM-DD:HH')}}
           </td>
           <td>
             <button class="layui-btn  layui-btn-danger" @click="del(d)">删除</button>
