@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>部门管理</title>
-  <link rel="stylesheet" href="../3rd/layui/css/layui.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="css/dept.css">
   <style>
     .spinner-border {
@@ -54,30 +54,82 @@
   <div id="app">
     <h1 class="tc">{{title}}</h1>
     <!-- 查询的表单 -->
-    <div class="layui-form-item ">
-      <input type="text" v-model="queryInfo.deptName" class="layui-input layui-input-inline ">
-      <button class="layui-btn layui-col-md2" @click="query">查询</button>
+    <div class="input-group">
+      <span class="input-group-text">部门名称模糊查询</span>
+      <input class="form-control " type=" text" v-model="queryInfo.deptName">
+      <button class="btn btn-outline-secondary col-2" @click="query">查询</button>
+      <button class="btn btn-outline-secondary col-1" data-bs-toggle="modal" data-bs-target="#addDept">添加</button>
+
     </div>
 
-    <div class="layui-form-item">
+    <div>
       <!-- 添加的表单 -->
-      <div class="layui-inline">
-        <input type="text" v-model="addInfo.deptName" placeholder="名称" class="layui-input layui-input-inline">
-        <input type="text" v-model="addInfo.deptInfo" placeholder="描述" class="layui-input layui-input-inline">
-        <button class="layui-btn" @click="add">添加部门</button>
-      </div>
-      <!-- 修改的表单 -->
-      <transition name="fade">
-        <div class="layui-inline" v-if="visible">
-          <input type="text" v-model="modifyInfo.deptName" placeholder="名称" class="layui-input layui-input-inline">
-          <input type="text" v-model="modifyInfo.deptInfo" placeholder="描述" class="layui-input layui-input-inline">
-          <button class="layui-btn" @click="modify">修改部门</button>
-          <button class="layui-btn" @click="visible=false">取消修改</button>
+
+      <div class="modal fade" id="addDept" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">添加部门</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">部门名称:</label>
+                  <input type="text" class="form-control" v-model="addInfo.deptName">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">部门描述:</label>
+                  <textarea class="form-control" v-model="addInfo.deptInfo"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" @click="add">添加</button>
+            </div>
+          </div>
         </div>
-      </transition>
+      </div>
+
+      <!-- 修改的表单 -->
+      <div class="modal fade" id="updateDept" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">修改部门</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">部门名称:</label>
+                  <input type="text" class="form-control" v-model="modifyInfo.deptName">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">部门描述:</label>
+                  <textarea class="form-control" v-model="modifyInfo.deptInfo"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" @click="modify">修改</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <transition name="fade">
+        <div class="layui-inline" v-if="visible">
+          <input type="text" v-model="modifyInfo.deptName" placeholder="名称">
+          <input type="text" v-model="modifyInfo.deptInfo" placeholder="描述">
+          <button @click="modify">修改部门</button>
+          <button @click="visible=false">取消修改</button>
+        </div>
+      </transition> -->
     </div>
     <!-- 数据显示部分 -->
-    <table v-if="!loading" class="layui-table">
+    <table v-if="!loading" class="text-center table-bordered table table-hover  table-striped">
       <thead>
         <tr>
           <th>部门编号</th>
@@ -88,50 +140,44 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="d in list">
+        <tr v-for="d in list" :key="d.deptId">
           <td>{{d.deptId}}</td>
           <td>{{d.deptName}}</td>
           <td>{{d.deptInfo}}</td>
           <td>
             {{getTime(d.lastupdate)}}
-            <br>
-            {{d.lastupdate | formatData}}
-            <br>
-            {{d.lastupdate | formatData('YYYY-MM-DD:HH')}}
           </td>
           <td>
-            <button class="layui-btn  layui-btn-danger" @click="del(d)">删除</button>
-            <button @click="showModify(d)" class="layui-btn  layui-btn-danger">修改</button>
+            <div class="btn-group">
+              <button class=" btn btn-outline-danger" @click="del(d)">删除</button>
+              <button class="btn btn-outline-info" @click="showModify(d)" data-bs-toggle="modal" data-bs-target="#updateDept">修改</button>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
     <!-- 分页样式 -->
     <div v-if="!loading">
-      <a href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a>
-      |
-      <a href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a>
-      |
-      当前页/总页数/记录数({{page.pageNumber}}|{{page.pageCount}}|{{page.total}})
-      跳转
-      <select v-model="page.pageNumber" @change="query">
-        <option v-for="y in page.pageCount" value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">当前页 {{page.pageNumber}}</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">总页数 {{page.pageCount}}</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">记录数 {{page.total}}</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a></li>
+        <li class="page-item">
+          <select class="page-link  " v-model="page.pageNumber" @change="query">
+            <option v-for="y in page.pageCount" :value="y">{{y}}</option>
+          </select>
+        </li>
+      </ul>
     </div>
 
     <div v-if="loading" class="spinner-border"></div>
     <!-- 修改的表单 -->
-    {{modifyInfo}}
 
 
   </div>
-  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-  </fieldset>
 
-  <div id="demo7"></div>
 
 
 
@@ -140,8 +186,8 @@
   <script src="../lib/spark-md5.js"></script>
   <script src="../lib/vue.min.js"></script>
   <script src="../js/ajax.js"></script>
-  <script src="../3rd/layui/layui.js"></script>
   <script src="../js/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="../js/myfilter.js"></script>
   <script src="js/dept.js"></script>
 </body>

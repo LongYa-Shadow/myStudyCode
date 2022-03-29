@@ -43,6 +43,9 @@ new Vue({
         employeeName: '',
         phone: '',
       },
+      loading: false,
+      //员工修改部分
+      updateInfo: {},
     }
   },
   methods: {
@@ -52,10 +55,12 @@ new Vue({
       app.query()
     },
     query() {
+      app.loading = true
       //处理分页信息到查询对象的问题
       copyJsonInfo(app.page, app.queryInfo)
       ajax.send('/manage/employee/queryAll', app.queryInfo, (data) => {
         if (data.success) {
+          app.loading = false
           app.page = data.page
           app.list = data.list
         } else {
@@ -84,10 +89,21 @@ new Vue({
         //添加信息的部门变更
         app.addInfo.deptId = info.deptId
       } else if ('query' == app.deptInfo.mode) {
-        //添加信息的部门变更
+        //查询信息的部门变更
         app.queryInfo.deptId = info.deptId
+      } else if ('update' == app.deptInfo.mode) {
+        //查询信息的部门变更
+        app.updataInfo.deptId = info.deptId
       }
       app.deptInfo.visible = false
+      this.query()
+    },
+    toPage(pageNumber) {
+      //分页合法性校验
+      if (pageNumber <= 0 || pageNumber > this.page.pageCount) {
+        return
+      }
+      this.page.pageNumber = pageNumber
       this.query()
     },
     toDeptPage(pageNumber) {
@@ -108,10 +124,38 @@ new Vue({
         }
       })
     },
+    updateEmp() {
+      app.loading = true
+      ajax.send('/manage/employee/update', app.updateInfo, (data) => {
+        app.loading = false
+        alert(data.message)
+        this.query()
+      })
+    },
+    showUpdateEmp(info) {
+      this.updateInfo = JSON.parse(JSON.stringify(info))
+      delete this.updateInfo.lastupdate
+      delete this.updateInfo.dept
+    },
+    delEmp(info) {
+      if (confirm('是否删除员工：' + info.employeeName)) {
+        app.loading = true
+        ajax.send(
+          '/manage/employee/delete',
+          { employeeId: info.employeeId },
+          (data) => {
+            app.loading = false
+            alert(data.message)
+            app.query()
+          }
+        )
+      }
+    },
   },
   created() {
     app = this
     this.query()
+    this.queryDept()
     //orderBy初始值
     app.queryInfo.orderBy = app.orderByList[1].value
   },

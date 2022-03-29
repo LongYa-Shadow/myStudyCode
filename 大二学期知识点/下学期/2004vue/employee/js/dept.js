@@ -27,7 +27,7 @@ const app = new Vue({
   },
   methods: {
     getTime(time) {
-      console.log('要处理的时间信息', time)
+      // console.log('要处理的时间信息', time)
       //转换时间戳为指定格式
       return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
     },
@@ -67,14 +67,6 @@ const app = new Vue({
         }
       })
     },
-    toPage(pageNumber) {
-      //分页合法性校验
-      if (pageNumber <= 0 || pageNumber > this.page.pageCount) {
-        return
-      }
-      this.page.pageNumber = pageNumber
-      this.query()
-    },
     query() {
       let app = this
       app.loading = true
@@ -96,24 +88,16 @@ const app = new Vue({
         'post'
       )
     },
+    toPage(pageNumber) {
+      //分页合法性校验
+      if (pageNumber <= 0 || pageNumber > this.page.pageCount) {
+        return
+      }
+      this.page.pageNumber = pageNumber
+      this.query()
+    },
   },
   created() {
     this.query()
   },
-})
-layui.use(['laypage', 'layer'], function () {
-  var laypage = layui.laypage,
-    layer = layui.layer
-
-  //完整功能
-  laypage.render({
-    elem: 'demo7',
-    count: 100,
-    layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
-    jump: function (obj) {
-      // console.log(obj)
-    },
-  })
-
-  //将一段数组分页展示
 })
