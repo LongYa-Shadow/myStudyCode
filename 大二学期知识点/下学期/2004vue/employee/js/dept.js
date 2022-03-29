@@ -57,9 +57,7 @@ const app = new Vue({
       delete this.modifyInfo.lastupdate
     },
     add() {
-      app.loading = true
       ajax.send('/manage/dept/add', app.addInfo, (data) => {
-        app.loading = false
         alert(data.message)
         if (data.success) {
           app.addInfo = {}
