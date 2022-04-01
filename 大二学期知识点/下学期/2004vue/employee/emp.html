@@ -63,7 +63,6 @@
         <span class="input-group-text" v-else>当前部门：{{deptInfo.selected.deptName}}</span>
         <button class="btn btn-outline-primary" @click="deptInfo.mode='query'; queryDept()" data-bs-toggle="modal" data-bs-target="#DeptNew">选择其他部门</button>
 
-
         <span class="input-group-text">姓名：</span>
         <input type="text" class="form-control" v-model="queryInfo.employeeName" placeholder="姓名">
         <span class="input-group-text">电话：</span>
@@ -79,15 +78,15 @@
     </div>
     部门选择模式：{{deptInfo.mode}}
     <!-- 添加的表单部分 -->
-    <!-- <div>
-      <span v-if="queryInfo.deptId == -1">部门必须填写</span>
-      <span v-else>{{deptInfo.selected.deptName}}</span>
-      <button @click="deptInfo.mode='add'; queryDept()" data-bs-toggle="modell" data-bs-target="#DeptNew">选择部门</button>
+    <div>
+      <span v-if="addInfo.deptId == -1">部门必须填写</span>
+      <span v-else>{{deptInfo.selectAdd.deptName}}</span>
+      <button @click="deptInfo.mode='add'; queryDept()" data-bs-toggle="modal" data-bs-target="#DeptNew">选择部门</button>
       <input type="text" :value="addInfo.employeeName">
       <input type="text" :value="addInfo.phone">
       <button @click="addEmp">添加</button>
       {{addInfo}}
-    </div> -->
+    </div>
 
     <!-- 数据呈现 -->
     <table class="text-center table-bordered table table-hover  table-striped">
@@ -113,7 +112,7 @@
           <td>
             <div class="btn-group">
               <button @click="delEmp(d)" class="btn btn-outline-danger">删除</button>
-              <button @click="showUpdateEmp(d); deptInfo.mode='query'; queryDept()" class="btn btn-outline-info" data-bs-target="#modal-updateEmp" data-bs-toggle="modal">修改</button>
+              <button @click="showUpdateEmp(d); deptInfo.mode='update'; queryDept()" class="btn btn-outline-info" data-bs-target="#modal-updateEmp" data-bs-toggle="modal">修改</button>
             </div>
           </td>
         </tr>
@@ -164,26 +163,24 @@
                     {{d.lastupdate | formatData}}
                   </td>
                   <td>
-                    <button class="btn btn-outline-info" @click="selectDept(d)">选择</button>
+                    <button class="btn btn-outline-info" @click="selectDept(d)" data-bs-dismiss="modal">选择</button>
                   </td>
                 </tr>
               </tbody>
             </table>
             <!-- 分页样式 -->
-            <div>
-              <a href="javascript:void(0)" @click="toDeptPage(deptInfo.page.pageNumber-1)">上一页</a>
-              |
-              当前页/总页数/记录数({{deptInfo.page.pageNumber}}|{{deptInfo.page.pageCount}}|{{deptInfo.page.total}})
-              跳转
-              |
-              <a href="javascript:void(0)" @click="toDeptPage(deptInfo.page.pageNumber+1)">下一页</a>
-              <select v-model="deptInfo.page.pageNumber" @change="queryDept">
-                <option v-for="y in deptInfo.page.pageCount" value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toDeptPage(deptInfo.page.pageNumber-1)">上一页</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">当前页 {{deptInfo.page.pageNumber}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">总页数 {{deptInfo.page.pageCount}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">记录数 {{deptInfo.page.total}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toDeptPage(deptInfo.page.pageNumber+1)">下一页</a></li>
+              <li class="page-item">
+                <select class="page-link" v-model="deptInfo.page.pageNumber" @change="query">
+                  <option v-for="y in deptInfo.page.pageCount" :value="y">{{y}}</option>
+                </select>
+              </li>
+            </ul>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
@@ -255,6 +252,7 @@
         </div>
       </div>
     </div>
+    
 
 
     <div v-if="loading" class="spinner-border"></div>

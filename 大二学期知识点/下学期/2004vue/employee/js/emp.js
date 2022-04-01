@@ -32,6 +32,8 @@ new Vue({
         list: [],
         //选中值
         selected: {},
+        selectAdd: {},
+        selectModi: {},
         //部门选择是否可见
         visible: false,
         //判断部门选择的模式(查询，添加，修改)
@@ -83,12 +85,14 @@ new Vue({
     //部门选择
     selectDept(info) {
       //记录选择的值(给页面显示)
-      app.deptInfo.selected = info
+      // app.deptInfo.selected = info
       //同过mode判断返回值给到什么字段
       if ('add' == app.deptInfo.mode) {
+        app.deptInfo.selectAdd = info
         //添加信息的部门变更
         app.addInfo.deptId = info.deptId
       } else if ('query' == app.deptInfo.mode) {
+        app.deptInfo.selected = info
         //查询信息的部门变更
         app.queryInfo.deptId = info.deptId
       } else if ('update' == app.deptInfo.mode) {
@@ -118,7 +122,12 @@ new Vue({
       ajax.send('/manage/employee/add', app.addInfo, (data) => {
         if (data.success) {
           alert(data.message)
-          this.query
+          this.addInfo = {
+            deptId: -1,
+            employeeName: '',
+            phone: '',
+          }
+          this.query()
         } else {
           alert(data.message)
         }
