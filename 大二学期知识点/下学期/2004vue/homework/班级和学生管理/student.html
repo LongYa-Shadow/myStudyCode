@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生信息管理</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="text-center">
+      <h2>{{title}}</h2>
+    </div>
+    <!-- 头部表单 -->
+    <div class="input-group">
+      <div class="input-group  input-group-sm w-auto">
+        <span class="input-group-text ">当前班级</span>
+        <span class="input-group-text" v-if="queryInfo.cid==-1">全班级</span>
+        <span class="input-group-text" v-else>{{classInfo.selected.cname}}</span>
+        <button class="btn btn-outline-secondary" @click="classInfo.mode='query'; " data-bs-toggle="modal" data-bs-target="#modalNewClass">选择</button>
+      </div>
+      <div class="input-group input-group-sm w-50">
+        <input type="text" class="form-control" placeholder="姓名模糊查询" v-model="queryInfo.sname">
+        <input type="text" class="form-control" placeholder="QQ号模糊查询" v-model="queryInfo.qq">
+        <input type="text" class="form-control" placeholder="微信号模糊查询" v-model="queryInfo.wechat">
+        <input type="text" class="form-control" placeholder="电话号模糊查询" v-model="queryInfo.phone">
+      </div>
+      <div class="btn-group btn-group-sm w-25">
+        <button class="btn btn-outline-danger" @click="query">查询</button>
+        <button class="btn btn-outline-info" @click="resetQuery">重置</button>
+        <button class="btn btn-outline-success" @click="classInfo.mode= 'add';" data-bs-toggle="modal" data-bs-target="#modalAddStudent">添加</button>
+      </div>
+
+    </div>
+    <!-- 主体内容 -->
+    <div v-if="!loading">
+      <table class="table text-center table-hover">
+        <thead>
+          <tr>
+            <th>学生编号</th>
+            <th>学生姓名</th>
+            <th>所属班级</th>
+            <th>手机号码</th>
+            <th>qq号</th>
+            <th>微信号</th>
+            <th>家庭地址</th>
+            <th>信息最后修改时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="s in list" :key="s.sid">
+            <td>{{s.sid}}</td>
+            <td>{{s.sname}}</td>
+            <td>{{s.tbClass.cname}}</td>
+            <td>{{s.phone}}</td>
+            <td>{{s.qq}}</td>
+            <td>{{s.wechat}}</td>
+            <td>{{s.address}}</td>
+            <td>{{s.lastupdate | formatData}}</td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-outline-danger" @click="del(s)">删除</button>
+                <button class="btn btn-outline-info" @click="showUpdateInfo(s)" data-bs-toggle="modal" data-bs-target="#modalUpdateStudent">修改</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <!-- 分页样式 -->
+      <div>
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toPage(page.pageNumber-1)">上一页</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)">当前页 {{page.pageNumber}}</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)">总页数 {{page.pageCount}}</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)">记录数 {{page.total}}</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toPage(page.pageNumber+1)">下一页</a></li>
+          <li class="page-item">
+            <select class="page-link" v-model="page.pageNumber" @change="query">
+              <option v-for="y in page.pageCount" :value="y">{{y}}</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 加载样式 -->
+    <div v-if="loading" class="spinner-border"></div>
+
+    <!-- 模态框 -->
+    <div class="modal" tabindex="-1" id="modalNewClass" data-bs-backdrop="static">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">班级选择</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <input type="text" class="form-control" v-model="classInfo.selected.cname" placeholder="输入班级">
+            </div>
+            <table class="table table-hover text-center table-sm">
+              <thead>
+                <tr>
+                  <th>班级编号</th>
+                  <th>班级名称</th>
+                  <th>班级描述</th>
+                  <th>最后修改时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="c in classInfo.list" :key="c.cid">
+                  <td>{{c.cid}}</td>
+                  <td>{{c.cname}}</td>
+                  <td>{{c.cinfo}}</td>
+                  <td>{{c.lastupdate | formatData}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <div class="btn btn-outline-info" @click="selectClass(c)">选择</div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- 数据分页 -->
+            <ul class="pagination justify-content-center pagination-sm">
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toClassPage(classInfo.page.pageNumber-1)">上一页</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">当前页 {{classInfo.page.pageNumber}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">总页数 {{classInfo.page.pageCount}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">记录数 {{classInfo.page.total}}</a></li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)" @click="toClassPage(classInfo.page.pageNumber+1)">下一页</a></li>
+              <li class="page-item">
+                <select class="page-link" v-model="classInfo.page.pageNumber" @change="query">
+                  <option v-for="y in classInfo.page.pageCount" :value="y">{{y}}</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button v-if="classInfo.mode=='add'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddStudent">Save changes</button>
+            <button v-else type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="query">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 添加模态框 -->
+    <div class="modal fade" id="modalAddStudent" tabindex="-1" data-bs-backdrop="static">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title ">添加学生</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center input-group justify-content-around">
+              <span class="input-group-text">所选班级:{{classInfo.selectedAdd.cname}}</span>
+              <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalNewClass">选择班级</button>
+            </div>
+            <form class="">
+              <label for="recipient-name" class="col-form-label">学生名称:</label>
+              <input type="text" class="form-control" v-model="addInfo.sname">
+              <label for="message-text" class="col-form-label">QQ:</label>
+              <input type="text" class="form-control" v-model="addInfo.qq">
+              <label for="message-text" class="col-form-label">WeChat:</label>
+              <input type="text" class="form-control" v-model="addInfo.wechat">
+              <label for="message-text" class="col-form-label">Phone:</label>
+              <input type="text" class="form-control" v-model="addInfo.phone">
+              <label for="message-text" class="col-form-label">家庭地址</label>
+              <input type="text" class="form-control" v-model="addInfo.address">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-info" @click="addStudent">添加</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 修改模态框 -->
+    <div class="modal fade" id="modalUpdateStudent" tabindex="-1" data-bs-backdrop="static">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title ">修改学生</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <form class="">
+              <label for="recipient-name" class="col-form-label">学生名称:</label>
+              <input type="text" class="form-control" v-model="updateInfo.sname">
+              <label for="message-text" class="col-form-label">QQ:</label>
+              <input type="text" class="form-control" v-model="updateInfo.qq">
+              <label for="message-text" class="col-form-label">WeChat:</label>
+              <input type="text" class="form-control" v-model="updateInfo.wechat">
+              <label for="message-text" class="col-form-label">Phone:</label>
+              <input type="text" class="form-control" v-model="updateInfo.phone">
+              <label for="message-text" class="col-form-label">家庭地址</label>
+              <input type="text" class="form-control" v-model="updateInfo.address">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-info" @click="updateStudent">修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <script src="../lib/axios.min.js"></script>
+  <script src="../lib/qs.min.js"></script>
+  <script src="../lib/spark-md5.js"></script>
+  <script src="../lib/vue.min.js"></script>
+  <script src="../lib/ajax.js"></script>
+  <script src="../lib/myfilter.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/student.js"></script>
+</body>
+
+</html>
