@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+}
+
+.modify-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modify-box > div {
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.img-box {
+  display: inline-block;
+  width: 50px;
+  padding: 2px;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+}
+
+.img-box > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

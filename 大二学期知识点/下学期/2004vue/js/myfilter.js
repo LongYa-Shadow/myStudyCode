@@ -44,3 +44,11 @@ function copyJsonInfo(jsona, jsonb) {
     jsonb[key] = jsona[key]
   }
 }
+
+//性别相关
+
+const SEX_LIST = [
+  { value: 'm', text: '男生' },
+  { value: 'f', text: '女生' },
+  { value: 'n', text: '保密' },
+]
