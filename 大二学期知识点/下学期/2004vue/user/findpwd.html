@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>邮箱找回密码</title>
+</head>
+
+<body>
+
+
+  <div id="app">
+    <div> {{title}}</div>
+    <div>
+      <input type="text" v-model="info.username" placeholder="登录名">
+      <a href="javascript:void(0)" @click="sendCode">发送验证码</a>
+      <input type="text" v-model="info.code" placeholder="验证码">
+      <input type="password" v-model="info.password" placeholder="密码">
+      <input type="password" v-model="pwdVerify" placeholder="确认密码">
+      <button @click="modifyPwd">更改密码</button>
+    </div>
+
+  </div>
+
+  <script src="../lib/axios.min.js"></script>
+  <script src="../lib/qs.min.js"></script>
+  <script src="../lib/spark-md5.js"></script>
+  <script src="../lib/vue.min.js"></script>
+  <script src="../js/ajax.js"></script>
+  <script src="../js/myfilter.js"></script>
+  <script src="./js/findpwd.js"></script>
+</body>
+
+</html>

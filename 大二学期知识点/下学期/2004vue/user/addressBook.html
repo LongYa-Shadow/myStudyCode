@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户地址簿</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{title}}</h2>
+    <hr>
+    <!-- 模糊部分 -->
+    <div>
+      联系人姓名模糊查询：<input type="text" v-model="queryInfo.username">
+      联系人电话列表模糊查询：<input type="text" v-model="queryInfo.phone">
+      联系人QQ列表模糊查询：<input type="text" v-model="queryInfo.qq">
+      联系人微信列表模糊查询：<input type="text" v-model="queryInfo.wechat">
+      <button @click="query">查询</button>
+      <button @click="deleteQuery">回收站</button>
+    </div>
+    <!-- 添加部分 -->
+    <div>
+      联系人姓名：<input type="text" v-model="addInfo.username">
+      联系人电话列表，用逗号分隔：<input type="text" v-model="addInfo.phone">
+      联系人QQ列表，用逗号分隔：<input type="text" v-model="addInfo.qq">
+      联系人微信列表，用逗号分隔：<input type="text" v-model="addInfo.wechat">
+      <button @click="add">添加</button>
+    </div>
+    {{message}}
+    <div>
+      {{list}}
+    </div>
+    <!-- 显示部分 -->
+    <table style="width: 100%; text-align: center;" border="1">
+      <tr>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>QQ</th>
+        <th>微信</th>
+        <th>操作</th>
+      </tr>
+      <tr v-for="d in list" :key="d.ucid">
+        <td>{{d.username}}</td>
+        <td>{{d.phone}}</td>
+        <td>{{d.qq}}</td>
+        <td>{{d.wechat}}</td>
+        <td>
+          <button @click="del(d)">删除</button>
+          <button @click="showModify(d)">编辑</button>
+        </td>
+      </tr>
+    </table>
+    <!-- 修改部分 -->
+    <div v-if="modifyVisible">
+      联系人姓名：<input type="text" v-model="modifyInfo.username">
+      联系人电话列表，用逗号分隔：<input type="text" v-model="modifyInfo.phone">
+      联系人QQ列表，用逗号分隔：<input type="text" v-model="modifyInfo.qq">
+      联系人微信列表，用逗号分隔：<input type="text" v-model="modifyInfo.wechat">
+      <button @click="modoify">保存</button>
+      <button @click="modifyVisible=false">关闭</button>
+    </div>
+    <!-- 回收站 -->
+    <div v-if="deleteInfo.visible">
+      <table style="width: 100%; text-align: center;" border="1">
+        <tr>
+          <th>姓名</th>
+          <th>电话</th>
+          <th>QQ</th>
+          <th>微信</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="d in deleteInfo.list">
+          <td>{{d.username}}</td>
+          <td>{{d.phone}}</td>
+          <td>{{d.qq}}</td>
+          <td>{{d.wechat}}</td>
+          <td>
+            <button @click="recover(d)">恢复</button>
+            <button @click="deleteTrue(d)">彻底删除</button>
+          </td>
+        </tr>
+      </table>
+
+
+    </div>
+
+    <script src="../lib/axios.min.js"></script>
+    <script src="../lib/qs.min.js"></script>
+    <script src="../lib/spark-md5.js"></script>
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/myfilter.js"></script>
+    <script src="js/addressBook.js"></script>
+</body>
+
+</html>

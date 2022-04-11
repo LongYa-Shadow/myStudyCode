@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户记事本</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{title}}</div>
+    <hr>
+    <!-- 查询过滤的部分 -->
+    <div>
+      标题模糊查询：<input type="text" v-model="queryInfo.title">
+      信息模糊查询：<input type="text" v-model="queryInfo.info">
+      <button @click="query">查询</button>
+      <button @click="queryDeleteInfo">回收站</button>
+    </div>
+    <!-- 添加的部分 -->
+    <div>
+      记事标题：<input type="text" v-model="addInfo.title">
+      记事信息：<input type="text" v-model="addInfo.info">
+      <button @click="add">添加</button>
+      {{message}}
+    </div>
+
+    <!-- 显示的部分 -->
+    <div>
+
+      <table style="width: 100%; text-align: center;" border="1">
+        <tr>
+          <th>标题</th>
+          <th>内容</th>
+          <th>修改时间</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="d in list" :key="">
+          <td>{{d.title}}=={{d.unid}}</td>
+          <td>{{d.info}}</td>
+          <td>{{d.lastupdate | formatData}}</td>
+          <td>
+            <button @click="del(d)">删除</button>
+            <button @click="showModify(d)">编辑</button>
+          </td>
+        </tr>
+      </table>
+      <!-- {{list}}  -->
+    </div>
+    <!-- 修改的部分 -->
+    <div v-if="modifyVisible">
+      记事标题：<input type="text" v-model="modifyInfo.title">
+      记事信息：<input type="text" v-model="modifyInfo.info">
+      <button @click="modify">保存</button>
+      <button @click="modifyVisible=false">关闭</button>
+      {{message}}
+    </div>
+
+    <!-- 回收站！！！ -->
+    <hr>
+    <div v-if="deleteInfo.visible">
+      <h2>回收站！！！</h2>
+      <table style="width: 100%; text-align: center;" border="1">
+        <tr>
+          <th>标题</th>
+          <th>内容</th>
+          <th>修改时间</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="d in deleteInfo.list" :key="">
+          <td>{{d.title}}=={{d.unid}}</td>
+          <td>{{d.info}}</td>
+          <td>{{d.lastupdate | formatData}}</td>
+          <td>
+            <button @click="recover(d)">恢复</button>
+            <button @click="deleteInfo.visible=false">关闭</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- 注册时间/文件上传大小 -->
+  <!-- 作业3：同步完成用户地址簿功能 -->
+
+  <script src="../lib/axios.min.js"></script>
+  <script src="../lib/qs.min.js"></script>
+  <script src="../lib/spark-md5.js"></script>
+  <script src="../lib/vue.min.js"></script>
+  <script src="../js/ajax.js"></script>
+  <script src="../js/myfilter.js"></script>
+  <script src="./js/notepad.js"></script>
+</body>
+
+</html>

@@ -16,9 +16,20 @@ const app = new Vue({
         code: '',
       },
       mailVisible: false,
+      phoneVisible: false,
+      //修改用户手机
+      phoneInfo: {
+        phone: '',
+        code: '',
+        imageCode: '',
+        imgUrl: '',
+      },
+      //功能列表
+      menus: [{ link: 'notepad.html', text: '我的记事本' },{ link: 'addressBook.html', text: '我的地址簿' }],
     }
   },
   methods: {
+    //绑定手机
     queryUser() {
       ajax.send('/user/auth/getUserInfo', {}, (data) => {
         if (data.success) {
@@ -65,6 +76,37 @@ const app = new Vue({
           this.queryUser()
         }
       })
+    },
+    //发送图片验证码
+    sendPhoneImgCode() {
+      ajax.send('/tool/getImageCode', {}, (data) => {
+        //页面图片路径
+        this.phoneInfo.imgUrl = data.message
+      })
+    },
+    //发送手机验证码
+    sendPhoneCode() {
+      ajax.send(
+        '/tool/sendValidateCode',
+        {
+          phone: this.phoneInfo.phone,
+          imageCode: this.phoneInfo.imageCode.trim(),
+        },
+        (data) => {
+          console.log(data)
+        }
+      )
+    },
+    //保存修改数据
+    savePhone() {
+      ajax.send(
+        '/user/auth/updateUserPhone',
+        { phone: this.phoneInfo.phone, code: this.phoneInfo.code },
+        (data) => {
+          alert(data.message)
+          if (data.success) this.queryUser()
+        }
+      )
     },
   },
   created() {

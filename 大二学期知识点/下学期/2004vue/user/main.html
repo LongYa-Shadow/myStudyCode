@@ -21,11 +21,16 @@
                     没有头像
                 </span>
                 - 欢迎：{{tbUser.nickname}}
+                - 性别：{{tbUserInfo.sex | sex}}
                 - 注册时间: {{tbUser.lastupdate | formatData('YYYY-MM-DD')}}
-                - 注册天数: {{userOtherInfo.regDays}}
+                - 注册天数: {{userOtherInfo.regDays | regDays}}
                 <button @click="showModify">修改附加信息</button>
                 <button @click="mailVisible=true">修改邮箱</button>
+                <button @click="phoneVisible=true">修改手机号</button>
                 <button @click="logout">安全退出</button>
+                <div class="menus">
+                    <a v-for="(d, index) in menus" :key="index" :href="d.link">{{d.text}}</a>
+                </div>
             </div>
             <!-- 修改附加信息的部分 -->
             <div v-if="visible" class="modify-box">
@@ -62,6 +67,19 @@
                 <input type="text" v-model="mailInfo.code">
                 <button @click="saveMail">保存</button>
                 <button @click="mailVisible=false">关闭</button>
+            </div>
+            <hr>
+
+            <!-- 修改手机 -->
+            <div v-if="phoneVisible">
+                手机号 <input type="text" v-model="phoneInfo.phone">
+                图片验证码<input type="text" v-model="phoneInfo.imageCode">
+                <button @click="sendPhoneImgCode">刷新图片验证码</button>
+                <img :src="phoneInfo.imgUrl" alt="">
+                <button @click="sendPhoneCode">发送手机验证码</button>
+                验证码<input type="text" v-model="phoneInfo.code">
+                <button @click="savePhone">保存</button>
+                <button @click="phoneVisible=false">关闭</button>
             </div>
         </div>
         {{tbUserInfo}}
