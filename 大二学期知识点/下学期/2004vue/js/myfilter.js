@@ -52,3 +52,53 @@ const SEX_LIST = [
   { value: 'f', text: '女生' },
   { value: 'n', text: '保密' },
 ]
+
+//性别显示的filter
+Vue.filter('sex', (value) => {
+  for (let i = 0; i < SEX_LIST.length; i++) {
+    let data = SEX_LIST[i]
+    if (data.value == value) return data.text
+  }
+  return '性别数据错误'
+})
+
+// //文件大小转换
+// function formatSize(size) {
+//   if (size > 1024 * 1024) {
+//     return (size / 1024 / 1024).toFixed(2) + 'MB'
+//   } else if (size > 1024) {
+//     return (size / 1024).toFixed(2) + 'KB'
+//   } else {
+//     return size + 'B'
+//   }
+// }
+
+//文件大小显示的filter
+Vue.filter('fileSize', (value) => {
+  if (!value) {
+    return ''
+  }
+  let size = parseInt(value)
+  if (size > 1024 * 1024) {
+    return (size / 1024 / 1024).toFixed(2) + 'MB'
+  } else if (size > 1024) {
+    return (size / 1024).toFixed(2) + 'KB'
+  } else {
+    return size + 'B'
+  }
+})
+
+//注册天数显示的filter
+Vue.filter('regDays', (value) => {
+  if (!value) {
+    return ''
+  }
+  let days = parseInt(value)
+  if (days > 365) {
+    return (days / 365).toFixed(2) + '年'
+  } else if (days > 30) {
+    return (days / 30).toFixed(2) + '月'
+  } else {
+    return days + '天'
+  }
+})
