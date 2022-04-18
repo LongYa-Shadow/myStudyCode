@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件管理</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h2>{{title}}</h2>
+    <!-- 查询表单 -->
+    <div>
+      类型: <input type="text" v-model="queryInfo.contentType">
+      描述: <input type="text" v-model="queryInfo.fileinfo">
+      名称: <input type="text" v-model="queryInfo.filename">
+      <button @click="page.pageNumber;query()">查询</button>
+    </div>
+    <div>
+      <button @click="browserFile">文件选择...</button>
+      <span v-if="selectedFile">{{selectedFile.name}}=={{selectedFile.type}}=={{selectedFile.size}}</span>
+      <input type="text" v-model="fileInfo">
+      <button disabled="!selectedFile" @click="uploadFile">上传</button>
+      <span v-if="imgdata.length>0">
+        <img style="width: 5rem;" :src="imgdata" alt="">
+      </span>
+      <button @click="query">查询</button>
+    </div>
+
+
+    <div>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>文件名</th>
+            <th>文件类型</th>
+            <th>文件大小</th>
+            <th>文件描述</th>
+            <th>文件时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="file in list" :key="file.fid">
+            <td>{{file.filename}}</td>
+            <td>{{file.contentType}}</td>
+            <td>{{file.fileSize | fileSize  }}</td>
+            <td>{{file.fileinfo}}</td>
+            <td>{{file.lastupdate | formatData}}</td>
+            <td>
+              <button @click="copyLink(file)">复制地址</button>
+              <button @click="download(file)">下载</button>
+              <button @click="del(file)">删除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <script src="../lib/axios.min.js"></script>
+  <script src="../lib/qs.min.js"></script>
+  <script src="../lib/spark-md5.js"></script>
+  <script src="../lib/vue.min.js"></script>
+  <script src="../js/ajax.js"></script>
+  <script src="../js/myfilter.js"></script>
+
+  <script src="js/file.js"></script>
+</body>
+
+</html>

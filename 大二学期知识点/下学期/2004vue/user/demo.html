@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件上传基础知识</title>
+</head>
+
+<body>
+  <!-- 
+    如果表单要提交文件，method必须是post，enctype必须是multipart/form-data
+    file类的附加属性
+    accept    属性是一个字符串，它定义了文件 input 应该接受的文件类型。
+      一个以英文句号（"."）开头的合法的不区分大小写的文件名扩展名。例如： .jpg，.pdf 或 .doc。
+      一个不带扩展名的 MIME 类型字符串。
+      字符串 audio/*， 表示 “任何音频文件”。
+      字符串 video/*，表示 “任何视频文件”。
+      字符串 image/*，表示 “任何图片文件”。
+    capture  属性指出了 input 是图片或者视频类型，则它指定了使用哪个摄像头去这些数据
+    FileList 对象每个已选择的文件。如果 multiple 属性没有指定，则这个列表只有一个成员
+    当指定布尔类型属性 multiple (en-US), 文件 input 允许用户选择多个文件。
+  -->
+  <form action="" method="post" enctype="multipart/form-data">
+    <label for="myFile">文件浏览</label>
+    <input id="myFile" type="file" accept="image/*">
+  </form>
+  <!-- 自定义浏览文件 -->
+  <div>
+    <button id="btnFile">
+      浏览文件
+    </button>
+  </div>
+
+  <script>
+    let btnFile = document.getElementById('btnFile');
+    btnFile.addEventListener('click', function () {
+      //虚拟文件表单元素
+      let file = document.createElement('input');
+      file.type = 'file';
+      file.accept = 'image/*';
+
+      //监听文件选择事件
+      file.addEventListener('change', function (ev) {
+        console.log("文件选择变化", ev);
+        //如果触发了change事件，肯定有选中文件
+        //可以通过file表单元素的files获取选中的文件列表
+        console.log(this.files);
+        //查看文件的信息
+        console.log(this.files[0]);
+      })
+
+      /*   file.addEventListener('change', function () {
+          //获取选择的文件
+          let file = this.files[0];
+          //创建读取文件的对象
+          let reader = new FileReader();
+          //文件读取完成后的事件
+          reader.onload = function (e) {
+            //读取的文件内容
+            let data = e.target.result;
+            //创建一个img标签，显示选择的图片
+            let img = document.createElement('img');
+            img.src = data;
+            document.body.appendChild(img);
+          };
+          //读取文件
+          reader.readAsDataURL(file);
+        }); */
+      file.click();
+    });
+  </script>
+</body>
+
+</html>

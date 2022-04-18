@@ -6,7 +6,7 @@
     第一个参数时过滤器前面的数据
     第二个参数开始才传递给过滤器的其他参数
     过滤器要有返回值页面提供
-	使用过滤器：{{ xxx | 过滤器名}}  或  v-bind:属性 = "xxx | 过滤器名"
+  使用过滤器：{{ xxx | 过滤器名}}  或  v-bind:属性 = "xxx | 过滤器名"
 
   })
 */
@@ -102,3 +102,58 @@ Vue.filter('regDays', (value) => {
     return days + '天'
   }
 })
+
+
+//文件选择方法封装
+/**
+ * 
+ * @param {*} callback 文件选择选择后的回调函数
+ * @param {*} accept  文件类型过滤(可选)
+ */
+function openFile(callback, accept) {
+  let file = document.createElement('input')
+  file.type = 'file'
+  if (accept) file.accept = accept
+  file.addEventListener('change', (e) => {
+    console.log("===");
+    callback(file.files[0])
+  })
+
+  file.click()
+}
+
+
+//复制文本到剪切板
+function copyText(text) {
+  //创建文本框并设置内容
+  let input = document.createElement('input')
+  input.value = text
+  input.readOnly = 'readOnly'
+  document.body.append(input)
+  //添加到页面并全选
+  input.focus()
+  input.select()
+  input.setSelectionRange(0, input.value.length);//兼容苹果
+  //调用浏览器的复制功能并移除文本框
+  document.execCommand('copy')
+  document.body.removeChild(input)
+}
+
+//预览图片(获取图片信息)
+/**
+ * 
+ * @param {*} file 文件对象
+ * @param {*} cb 读取完成的回调
+ */
+function loadImageDate(file, cb) {
+  if (!file && file.type.substr(0, 5) != 'image/') {
+    cb(''); return;
+  }
+  //读取图片文件内容
+  let fr = new FileReader()
+  //监听文件读取完成事件
+  fr.addEventListener('load', (ev) => {
+    cb(fr.result)
+  })
+  fr.readAsDataURL(file)//读取完成触发load函数
+}
