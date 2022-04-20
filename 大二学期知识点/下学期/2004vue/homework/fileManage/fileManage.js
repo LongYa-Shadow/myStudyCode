@@ -19,7 +19,8 @@ new Vue({
         filename: '',
         fileinfo: '',
         contentType: ''
-      },
+      }, 
+      
       dialogVisibleFile: false,//上传模态框
       selectedFile: null,//上传文件
       fileInfo: '',//上传文件信息

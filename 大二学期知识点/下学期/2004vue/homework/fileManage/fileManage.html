@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <title>文件管理</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-container>
+      <el-row type="flex" justify="center">
+        <h2>{{title}} </h2>
+      </el-row>
+      <el-header class="">
+        <el-row type="flex" justify="frist" :gutter="10">
+          <el-col :span="3">
+            <el-select v-model="queryInfo.contentType" placeholder="——所属分组——">
+              <el-option v-for="f in fileGroup" :value="f.type" ::key="f.id">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <el-input v-model="queryInfo.filename" placeholder="文件名模糊查询" clearable prefix-icon="el-icon-search"></el-input>
+          </el-col>
+          <el-col :span="5">
+            <el-input v-model="queryInfo.fileinfo" placeholder="文件信息模糊查询" clearable prefix-icon="el-icon-search"></el-input>
+          </el-col>
+          <el-col :span="2">
+            <el-button type="primary" icon="el-icon-search" @click="page.pageNumber=1;query()">搜索</el-button>
+          </el-col>
+          <el-col :span="2">
+            <el-button type="success" @click="dialogVisibleFile = true">上传<i class="el-icon-upload el-icon--right"></i></el-button>
+          </el-col>
+          <el-col :span="2">
+            <el-button type="warning" icon="el-icon-refresh" @click='resetQuery'>刷新</el-button>
+          </el-col>
+          <el-col :span="2">
+            <el-button type="danger" icon="el-icon-back">返回</el-button>
+          </el-col>
+        </el-row>
+      </el-header>
+
+      <el-main>
+        <el-table :data="list" v-loading="loadingTable" element-loading-text="拼命加载中">
+          <el-table-column prop="" label=" 所属分组">
+          </el-table-column>
+          <el-table-column prop="filename" label="文件名称"></el-table-column>
+          <el-table-column label="文件大小">
+            <template slot-scope="scope">
+              {{scope.row.fileSize | fileSize}}
+            </template>
+          </el-table-column>
+          <el-table-column prop="fileinfo" label="文件描述"></el-table-column>
+          <el-table-column prop="contentType" label="文件类型"></el-table-column>
+          <el-table-column label="最后修改时间">
+            <template slot-scope="scope">
+              {{scope.row.lastupdate | formatData}}
+            </template>
+          </el-table-column>
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+
+              <el-row :gutter="10" style="margin-bottom: 10px;">
+                <el-col :span="10">
+                  <el-button type="warning" icon="el-icon-edit" size="medium" @click="download(scope.row)">下载</el-button>
+                </el-col>
+                <el-col :span="10">
+                  <el-button type="danger" icon="el-icon-delete" size="medium" @click="delFile(scope.row)">删除</el-button>
+                </el-col>
+              </el-row>
+              <el-row :gutter="10">
+                <el-col :span="10">
+                  <el-button type="success" icon="el-icon-link" size="medium" @click="copyLink(scope.row)">地址</el-button>
+                </el-col>
+                <el-col :span="10" v-if="">
+                  <el-button type="primary" icon="el-icon-view" size="medium" @click="previewImg(scope.row); dialogVisibleImg =true; ">预览</el-button>
+                </el-col>
+              </el-row>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-main>
+      <el-footer>
+        <el-row class="block" type="flex" justify="center">
+          <el-pagination background="true" @prev-click="page.pageNumber--;" @next-click="page.pageNumber++;" :current-page.sync="page.pageNumber" @current-change="query()" :page-size="page.pageSize" layout="prev, pager, next, jumper" :total="page.total">
+          </el-pagination>
+        </el-row>
+      </el-footer>
+    </el-container>
+    <!-- 模态框  -->
+    <el-dialog title="添加文件" :visible.sync="dialogVisibleFile" width="30%">
+      <span>
+        <el-form>
+          <el-form-item>
+            <el-buttton class="el-button el-button--default" @click="browserFile">选择文件...</el-buttton>
+            <span v-if="selectedFile">{{selectedFile.name}}</span>
+            <span v-if="imgdata.length>0">
+              <img style="width: 5rem;" :src="imgdata">
+            </span>
+          </el-form-item>
+          <el-form-item>
+            <el-input v-model="fileInfo" placeholder="文件描述信息" clearable></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="el-button--default" v-loading.fullscreen.lock="loadingUpFile" :disabled="!selectedFile" @click="uploadFile;">点击上传</el-button>
+          </el-form-item>
+        </el-form>
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <!-- <el-button @click="dialogVisibleFile = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisibleFile = false">确 定</el-button> -->
+      </span>
+    </el-dialog>
+    <el-dialog title="图片预览" :visible.sync="dialogVisibleImg" width="30%">
+      <span>
+        <div class="demo-image">
+          <div class="block">
+            <span class="demonstration"></span>
+            <el-image style="width: 5rem; height: 5rem" :src="previewImgUrl"></el-image>
+          </div>
+        </div>
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <!-- <el-button @click="dialogVisible = false">取 消</el-button> -->
+        <el-button type="primary" @click="dialogVisibleImg = false">关闭</el-button>
+      </span>
+    </el-dialog>
+  </div>
+
+
+  <script src="../lib/vue.min.js"></script>
+  <script src="../lib/myfilter.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script type="module" src="fileManage.js"></script>
+  <!-- 引入组件库 -->
+</body>
+
+</html>
