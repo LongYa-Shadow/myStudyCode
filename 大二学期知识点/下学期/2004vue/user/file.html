@@ -23,7 +23,7 @@
       <button @click="browserFile">文件选择...</button>
       <span v-if="selectedFile">{{selectedFile.name}}=={{selectedFile.type}}=={{selectedFile.size}}</span>
       <input type="text" v-model="fileInfo">
-      <button disabled="!selectedFile" @click="uploadFile">上传</button>
+      <button :disabled="!selectedFile" @click="uploadFile">上传</button>
       <span v-if="imgdata.length>0">
         <img style="width: 5rem;" :src="imgdata" alt="">
       </span>
@@ -47,7 +47,7 @@
           <tr v-for="file in list" :key="file.fid">
             <td>{{file.filename}}</td>
             <td>{{file.contentType}}</td>
-            <td>{{file.fileSize | fileSize  }}</td>
+            <td>{{file.fileSize | fileSize }}</td>
             <td>{{file.fileinfo}}</td>
             <td>{{file.lastupdate | formatData}}</td>
             <td>

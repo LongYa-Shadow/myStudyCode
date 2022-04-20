@@ -115,7 +115,7 @@ function openFile(callback, accept) {
   file.type = 'file'
   if (accept) file.accept = accept
   file.addEventListener('change', (e) => {
-    console.log("===");
+    console.log(file.files);
     callback(file.files[0])
   })
 

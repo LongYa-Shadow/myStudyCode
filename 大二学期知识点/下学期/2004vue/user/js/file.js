@@ -22,6 +22,7 @@ new Vue({
     browserFile() {
       openFile((file) => {
         this.selectedFile = file
+        console.log(file);
         if (file.type.substr(0, 6) == 'image/') {
           loadImageDate(file, (data) => {
             this.imgdata = data
