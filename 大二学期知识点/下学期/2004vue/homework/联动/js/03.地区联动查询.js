@@ -1,3 +1,5 @@
+import ajax from '../../lib/ajax.js'
+import Vue from '../../lib/vue.esm.js'
 Vue.config.devtools = true
 const vm = new Vue({
     el: '#app',
@@ -50,7 +52,7 @@ const vm = new Vue({
             ajax.send('/linkinfo/queryAreaByPid', { pid: this.daid }, (data) => {
                 this.street = data.list
                 this.pid = this.street[0].aid
-                    // console.log(this.pid);
+                // console.log(this.pid);
             })
         }
 

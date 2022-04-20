@@ -1,3 +1,6 @@
+import ajax from '../../lib/ajax.js'
+import Vue from '../../lib/vue.esm.js'
+Vue.config.devtools = true
 const vm = new Vue({
     el: '#app',
     data() {

@@ -1,3 +1,8 @@
+import ajax from '../../lib/ajax.js'
+import Vue from '../../lib/vue.esm.js'
+import tools from '../../lib/tools.js'
+Vue.config.devtools = true
+
 new Vue({
   el: '#app',
   data() {
@@ -25,7 +30,7 @@ new Vue({
   },
   methods: {
     query() {
-      copyJsonInfo(this.page, this.queryInfo)
+      tools.copyJsonInfo(this.page, this.queryInfo)
       this.loading = true
       ajax.send('/manage/class/queryAll', this.queryInfo, (data) => {
         if (data.success) {

@@ -1,15 +1,16 @@
+// import Vue from './vue.esm.js'
+Vue.config.devtools = true
 //全局过滤器定义
 //格式化时间过滤器
-
 /* 
   Vue.filter('filter名称',处理filter数据的function(value str){
     第一个参数时过滤器前面的数据
     第二个参数开始才传递给过滤器的其他参数
     过滤器要有返回值页面提供
-	使用过滤器：{{ xxx | 过滤器名}}  或  v-bind:属性 = "xxx | 过滤器名"
-
+  使用过滤器：{{ xxx | 过滤器名}}  或  v-bind:属性 = "xxx | 过滤器名"
   })
 */
+
 Vue.filter('formatData', (value, format = 'YYYY-MM-DD HH:mm:ss') => {
   if (!value) {
     return ''
@@ -33,14 +34,45 @@ Vue.filter('formatData', (value, format = 'YYYY-MM-DD HH:mm:ss') => {
 
   return result
 })
-
-//复制jsona的数据到jsonb
-function copyJsonInfo(jsona, jsonb) {
-  //副本复制，不要原值复制
-  jsona = JSON.parse(JSON.stringify(jsona))
-  // console.log('传入josn:', jsona, jsonb)
-  for (const key in jsona) {
-    // console.log('jsona信息', key, jsona[key])
-    jsonb[key] = jsona[key]
+//性别显示的filter
+Vue.filter('sex', (value) => {
+  for (let i = 0; i < SEX_LIST.length; i++) {
+    let data = SEX_LIST[i]
+    if (data.value == value) return data.text
   }
-}
+  return '性别数据错误'
+})
+
+//文件大小显示的filter
+Vue.filter('fileSize', (value) => {
+  if (value == "0") return 0 + 'B'
+
+  if (!value) {
+    return ''
+  }
+  let size = parseInt(value)
+  if (size > 1024 * 1024) {
+    return (size / 1024 / 1024).toFixed(2) + 'MB'
+  } else if (size > 1024) {
+    return (size / 1024).toFixed(2) + 'KB'
+  } else {
+    return size + 'B'
+  }
+})
+
+//注册天数显示的filter
+Vue.filter('regDays', (value) => {
+  if (!value) {
+    return ''
+  }
+  let days = parseInt(value)
+  if (days > 365) {
+    return (days / 365).toFixed(2) + '年'
+  } else if (days > 30) {
+    return (days / 30).toFixed(2) + '月'
+  } else {
+    return days + '天'
+  }
+})
+
+

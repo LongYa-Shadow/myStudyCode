@@ -2,42 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>03.地区联动查询</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03.地区联动查询</title>
 </head>
 
 <body>
-    <div id="app">
-        省
-        <select @click="queryCity" v-model="paid">
-          <option v-for="p in province" :value="p.aid" :key="p.aid">{{p.name}}</option>
-        </select> 市
-        <select @click="queryDistrict" v-model="caid">
-        <option v-for="c in city" :value="c.aid" :key="c.aid">
-            {{c.name}}
-        </option>
-        </select> 县/区
-        <select @click="queryStreet" v-model="daid">
-          <option v-for="d in district" :value="d.aid" ::key="d.aid">
-            {{d.name}}
-          </option>
-        </select> 街道
-        <select>
-            <option v-for="s in street" :value="s.aid" :key="s.aid">
-              {{s.name}}
-            </option>
-        </select>
-        <hr>
-        <div>{{paid}}--{{caid}}--{{daid}}</div>
-    </div>
-    <script src="../lib/axios.min.js"></script>
-    <script src="../lib/qs.min.js"></script>
-    <script src="../lib/spark-md5.js"></script>
-    <script src="../lib/vue.min.js"></script>
-    <script src="../lib/ajax.js"></script>
-    <script src="js/03.地区联动查询.js"></script>
+  <div id="app">
+    省
+    <select @click="queryCity" v-model="paid">
+      <option v-for="p in province" :value="p.aid" :key="p.aid">{{p.name}}</option>
+    </select> 市
+    <select @click="queryDistrict" v-model="caid">
+      <option v-for="c in city" :value="c.aid" :key="c.aid">
+        {{c.name}}
+      </option>
+    </select> 县/区
+    <select @click="queryStreet" v-model="daid">
+      <option v-for="d in district" :value="d.aid" ::key="d.aid">
+        {{d.name}}
+      </option>
+    </select> 街道
+    <select>
+      <option v-for="s in street" :value="s.aid" :key="s.aid">
+        {{s.name}}
+      </option>
+    </select>
+    <hr>
+    <div>{{paid}}--{{caid}}--{{daid}}</div>
+  </div>
+
+  <script type="module" src="js/03.地区联动查询.js"></script>
 </body>
 
 </html>
