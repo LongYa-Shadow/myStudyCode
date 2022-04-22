@@ -25,9 +25,8 @@ tools.copyJsonInfo = function (jsona, jsonb) {
 tools.openFile = function (callback, accept) {
   let file = document.createElement('input')
   file.type = 'file'
-  if (accept) file.accept = accept
+  if (accept) file.accept = accept 
   file.addEventListener('change', (e) => {
-    console.log(file.files[0]);
     callback(file.files[0])
   })
 
@@ -69,5 +68,13 @@ tools.loadImageDate = function (file, cb) {
   console.log(file);
   fr.readAsDataURL(file)//读取完成触发load函数
 }
+
+tools.FILE_TYPE = [
+  { value: '', text: '全类型' },
+  { value: 'image/', text: '图片' },
+  { value: 'audio/', text: '音频' },
+  { value: 'video/', text: '视频' },
+  { value: 'text/', text: '文本' },
+]
 
 export default tools
