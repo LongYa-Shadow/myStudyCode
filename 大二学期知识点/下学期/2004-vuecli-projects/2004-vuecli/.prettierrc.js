@@ -9,4 +9,6 @@ module.exports = {
   proseWrap: 'preserve',
   //jsonzzi段自动补逗号
   trailingComma: 'es5',
+  //强制使用windows系统换行
+  endOfLine: 'crlf',
 }
