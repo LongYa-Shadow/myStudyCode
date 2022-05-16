@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="main"> {{ title }}</div>
-    <div><button @click="test">测试</button></div>
-    <input type="text" v-model="password" />
+    <div>
+      <el-button type="success" @click="test">测试</el-button>
+      <el-button type="primary">饿了么按钮</el-button>
+    </div>
+    <el-input type="text" v-model="password" />
   </div>
 </template>
 

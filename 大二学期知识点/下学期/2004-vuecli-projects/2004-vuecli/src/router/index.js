@@ -23,9 +23,14 @@ const routes = [
     component: () => import('../views/TestView.vue'),
   },
   {
-    path: '/testAjax',
+    path: '/test/ajax',
     name: 'test',
     component: () => import('../views/TestAjaxView.vue'),
+  },
+  {
+    path: '/user/login',
+    name: 'LoginView',
+    component: () => import('../views/LoginView.vue'),
   },
 ]
 
