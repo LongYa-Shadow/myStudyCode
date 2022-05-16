@@ -1,0 +1,11 @@
+/* 公用css */
+body {
+  margin: 0px;
+}
+
+.tc {
+  text-align: center;
+}
+.pd10 {
+  padding: 1rem;
+}
