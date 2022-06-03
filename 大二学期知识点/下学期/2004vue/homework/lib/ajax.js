@@ -66,6 +66,14 @@ const ajax = {
      */
     upload(file, params, callback) {
         //ajax请求需要FromData对象组织上传的信息
+        if (!file) {
+            callback({ code: 500, success: false, message: '请选择文件' })
+            return
+        }
+        if (file.size >= 2 * 1024 * 1024) {
+            callback({ code: 500, success: false, message: '文件太大' })
+            return
+        }
         let formData = new FormData()
         //formdata对象可以附加文件信息
         formData.append('file', file)
@@ -106,6 +114,10 @@ const ajax = {
             return spark.hash(info);
         }
         return '';
-    }
+    },
+    // 获取开发者密钥
+    getAccessKey() {
+        return '76cb360d-256b-4660-8e13-ab4e3ae9f874'
+    },
 }
 export default ajax

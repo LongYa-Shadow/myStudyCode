@@ -98,6 +98,9 @@
         },
         getDownloadUrl(fid) {
             return this.BASE_RUL + '/user/file/download?fid=' + fid
+        },
+        getAccessKey() {
+            return '0273e9f0-2cb4-459d-82e6-b2ff85d27761'
         }
     }
     window.ajax = ajax

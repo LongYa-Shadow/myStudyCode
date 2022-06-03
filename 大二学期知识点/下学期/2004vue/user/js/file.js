@@ -15,6 +15,8 @@ new Vue({
       list: [],
       //预览图片数据
       imgdata: '',
+      types: FILE_TYPE,
+      preimg: ''
 
     }
   },
@@ -35,7 +37,7 @@ new Vue({
     uploadFile() {
       if (!this.selectedFile || !this.fileInfo) return
       ajax.upload(this.selectedFile, { fileinfo: this.fileInfo }, (data) => {
-        console.log("应答结果", data);
+
         this.selectedFile = null
         this.imgdata = ''
         this.query()
@@ -66,6 +68,12 @@ new Vue({
           this.query()
         })
       }
+    },
+    isImg(info) {
+      return info.contentType.substr(0, 6) == 'image/'
+    },
+    showImg(info) {
+      this.preimg = ajax.getDownloadUrl(info.fid)
     }
 
   },
@@ -74,3 +82,9 @@ new Vue({
   },
 
 })
+
+/* 
+弹出文件openFile
+文件上传(隐式),
+修改用户信息
+*/

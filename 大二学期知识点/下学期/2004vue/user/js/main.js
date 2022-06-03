@@ -1,3 +1,4 @@
+
 const app = new Vue({
   el: '#app',
   data() {
@@ -25,13 +26,19 @@ const app = new Vue({
         imgUrl: '',
       },
       //功能列表
-      menus: [{ link: 'notepad.html', text: '我的记事本' },{ link: 'addressBook.html', text: '我的地址簿' }],
+      menus: [
+        { link: 'notepad.html', text: '我的记事本' },
+        { link: 'addressBook.html', text: '我的地址簿' },
+        { link: 'file.html', text: '我的文件管理' }
+      ],
+
     }
   },
   methods: {
     //绑定手机
     queryUser() {
       ajax.send('/user/auth/getUserInfo', {}, (data) => {
+        console.log(data);
         if (data.success) {
           //成功获取用户信息的情况
           app.tbUser = data.tbUser
@@ -58,6 +65,7 @@ const app = new Vue({
     },
     modify() {
       ajax.send('/user/auth/updateUserInfo', this.modifyInfo, (data) => {
+        console.log(data);
         alert(data.message)
         if (data.success) {
           this.queryUser()
@@ -108,6 +116,19 @@ const app = new Vue({
         }
       )
     },
+    browerFile() {
+      openFile((file) => {
+        ajax.upload(file, { fileinfo: this.tbUser.nickname + '--avatar' }, (data) => {
+          this.modifyInfo = JSON.parse(JSON.stringify(this.tbUserInfo))
+          this.modifyInfo.nickname = this.tbUser.nickname
+          this.modifyInfo.img = ajax.getDownloadUrl(data.data.fid)
+          delete this.modifyInfo.phone
+          delete this.modifyInfo.email
+          this.modify()
+
+        })
+      })
+    }
   },
   created() {
     this.queryUser()

@@ -15,7 +15,7 @@
             {{title}}
             <div>
                 <span v-if="tbUserInfo.img" class="img-box">
-                    <img :src="tbUserInfo.img" alt="头像">
+                    <img style="cursor: pointer;" :src="tbUserInfo.img" alt="头像" @click="browerFile">
                 </span>
                 <span v-else>
                     没有头像
@@ -30,7 +30,7 @@
                 <button @click="logout">安全退出</button>
                 <div class="menus">
                     <a v-for="(d, index) in menus" :key="index" :href="d.link">{{d.text}}</a>
-                </div>
+                </div>W
             </div>
             <!-- 修改附加信息的部分 -->
             <div v-if="visible" class="modify-box">
@@ -38,7 +38,6 @@
                     性别：<select v-model="modifyInfo.sex">
                         <option v-for="d in sexList" :value="d.value">{{d.text}}</option>
                     </select>
-
                     <div>
                         qq:<input type="text" v-model="modifyInfo.qq">
                     </div>
@@ -82,6 +81,9 @@
                 <button @click="phoneVisible=false">关闭</button>
             </div>
         </div>
+
+        {{tbUser}}
+        <hr>
         {{tbUserInfo}}
         <hr>
         {{userOtherInfo}}

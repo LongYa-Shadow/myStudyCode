@@ -14,7 +14,12 @@
     <h2>{{title}}</h2>
     <!-- 查询表单 -->
     <div>
-      类型: <input type="text" v-model="queryInfo.contentType">
+      类型:
+      <select v-model="queryInfo.contentType">
+        <option v-for="d in types" :value="d.value" ::key="d.value">{{d.text}}</option>
+      </select>
+      <!-- <input type="text" v-model="queryInfo.contentType"> -->
+
       描述: <input type="text" v-model="queryInfo.fileinfo">
       名称: <input type="text" v-model="queryInfo.filename">
       <button @click="page.pageNumber;query()">查询</button>
@@ -54,12 +59,19 @@
               <button @click="copyLink(file)">复制地址</button>
               <button @click="download(file)">下载</button>
               <button @click="del(file)">删除</button>
+              <button v-if="isImg(file)" @click="showImg(file)">预览</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
+
+
+
+    <div v-if="preimg.length>0">
+      <img style="width: 15rem;" :src="preimg" alt="">
+    </div>
   </div>
 
 

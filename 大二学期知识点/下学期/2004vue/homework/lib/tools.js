@@ -1,6 +1,6 @@
 //公共js
 const tools = {}
-const SEX_LIST = [
+tools.SEX_LIST = [
   { value: 'm', text: '男生' },
   { value: 'f', text: '女生' },
   { value: 'n', text: '保密' },
@@ -25,7 +25,7 @@ tools.copyJsonInfo = function (jsona, jsonb) {
 tools.openFile = function (callback, accept) {
   let file = document.createElement('input')
   file.type = 'file'
-  if (accept) file.accept = accept 
+  if (accept) file.accept = accept
   file.addEventListener('change', (e) => {
     callback(file.files[0])
   })

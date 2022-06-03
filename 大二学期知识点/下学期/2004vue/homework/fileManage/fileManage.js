@@ -39,8 +39,8 @@ new Vue({
         }
         this.loadingTable = false
         this.list = data.list
-        this.page = data.page
 
+        this.page = data.page
       })
     },
     browserFile() {
