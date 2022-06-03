@@ -16,6 +16,20 @@ tools.copyJsonInfo = function (jsona, jsonb) {
   }
 }
 
+//合并任意数量的json对象
+tools.concatJson = function () {
+  let result = {}
+  //参数
+  for (let i = 0; i < arguments.length; i++) {
+    //参数训话，逐个获取json参数
+    let info = JSON.parse(JSON.stringify(arguments[i]))
+    for (const key in info) {
+      result[key] = info[key]
+    }
+  }
+  return result
+}
+
 //文件选择方法封装
 /**
  *

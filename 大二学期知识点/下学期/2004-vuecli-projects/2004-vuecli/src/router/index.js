@@ -37,6 +37,31 @@ const routes = [
     name: 'MainView',
     component: () => import('../views/user/MainView.vue'),
   },
+  {
+    path: '/user/file',
+    name: 'FileView',
+    component: () => import('../views/user/FileView.vue'),
+  },
+  {
+    path: '/user/reg',
+    name: 'RegView',
+    component: () => import('../views/user/RegView.vue'),
+  },
+  {
+    path: '/user/note',
+    name: 'NoteView',
+    component: () => import('../views/user/NoteView.vue'),
+  },
+  {
+    path: '/user/contact',
+    name: 'ContactView',
+    component: () => import('../views/user/ContactView.vue'),
+  },
+  {
+    path: '/LinkView',
+    name: 'LinkView',
+    component: () => import('../views/LinkView.vue'),
+  },
 ]
 
 const router = new VueRouter({

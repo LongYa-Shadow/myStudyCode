@@ -1,4 +1,5 @@
-// import Vue from './vue.esm.js'
+import Vue from 'vue'
+import tools from '../js/tools'
 Vue.config.devtools = true
 //全局过滤器定义
 //格式化时间过滤器
@@ -36,8 +37,8 @@ Vue.filter('formatData', (value, format = 'YYYY-MM-DD HH:mm:ss') => {
 })
 //性别显示的filter
 Vue.filter('sex', (value) => {
-  for (let i = 0; i < SEX_LIST.length; i++) {
-    let data = SEX_LIST[i]
+  for (let i = 0; i < tools.SEX_LIST.length; i++) {
+    let data = tools.SEX_LIST[i]
     if (data.value == value) return data.text
   }
   return '性别数据错误'

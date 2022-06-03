@@ -3,13 +3,13 @@
     <el-card>
       <div slot="header">{{ title }}</div>
       <div>
-        <el-form :model="user" v-loading="loading">
-          <el-form-item>
+        <el-form :model="user" v-loading="loading" :rules="rules" ref="myform">
+          <el-form-item prop="username">
             <el-input v-model="user.username" placeholder="用户名">
               <i slot="prefix" class="el-input__icon iconfont">&#xe758;</i>
             </el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="password">
             <el-input type="password" show-password v-model="user.password" placeholder="密码">
               <i slot="prefix" class="el-input__icon iconfont">&#xe621;</i>
             </el-input>
@@ -36,6 +36,10 @@ export default {
         password: '',
       },
       loading: false,
+      rules: {
+        username: [{ required: true, message: '用户名必须填写' }],
+        password: [{ required: true, message: '密码必须填写' }],
+      },
     }
   },
   methods: {
