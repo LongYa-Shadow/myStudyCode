@@ -121,7 +121,7 @@ const ajax = {
   },
   // 获取开发者密钥
   getAccessKey() {
-    return '0273e9f0-2cb4-459d-82e6-b2ff85d27761'
+    return '76cb360d-256b-4660-8e13-ab4e3ae9f874'
   },
 }
 export default ajax

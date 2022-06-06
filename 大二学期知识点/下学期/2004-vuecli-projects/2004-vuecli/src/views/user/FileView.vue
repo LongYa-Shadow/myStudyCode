@@ -103,7 +103,7 @@
 <script>
 import server from '../../js/server'
 import tools from '../../js/tools'
-import '../../filters/myfilter'
+import '@/filters/myfilter'
 export default {
   name: 'FileView',
   data() {
