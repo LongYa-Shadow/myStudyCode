@@ -11,6 +11,7 @@
   - [下学期](https://code.aliyun.com/LongYa_Shadow/myStudyCode/tree/master/%E5%A4%A7%E4%BA%8C%E5%AD%A6%E6%9C%9F%E7%9F%A5%E8%AF%86%E7%82%B9)
   
 - [ES6+学习记录](https://longya-shadow.github.io/2022/01/22/ES6+/) 
+- [nginx服务初步]()
   
   
   
